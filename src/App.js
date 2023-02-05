@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import HomeContent from './components/HomeContent';
+import About from './components/About';
+import Events from './components/Events';
+import Contact from './components/Contact';
+import Login from './components/Login';
+import MembersHome from './components/members/MembersHome';
+import MapPage from './components/members/MapPage';
+import PlotHolders from './components/members/PlotHolders';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} >
+          <Route index element={<HomeContent />} />
+          <Route path="about" element={<About />} />
+          <Route path="events" element={<Events />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="login" element={<Login />} />
+        </Route>
+        <Route path="members" element={<Home />} >
+          <Route index element={<MembersHome />} />
+          <Route path="map" element={<MapPage />} />
+          <Route path="plotholders" element={<PlotHolders />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 
