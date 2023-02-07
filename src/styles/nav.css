@@ -1,0 +1,23 @@
+.strip {
+display: flex;
+justify-content: space-between;
+color: #444;
+width: 90%;
+padding: 10px 4%;
+font-size: larger;
+}
+
+.strip a {
+color: #444;
+text-decoration: none;
+border-color: #444;
+border-width: 1px;
+border-style: solid;
+padding: 4px;
+margin: 10px;
+transition: 200ms;
+}
+
+.strip a:hover {
+background-color: #eee;
+}

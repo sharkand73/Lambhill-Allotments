@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function MembersHome() {
   return (
-    <div>MembersHome</div>
+    <h1>Members Home</h1>
   )
 }

@@ -6,6 +6,7 @@ import About from './components/About';
 import Events from './components/Events';
 import Contact from './components/Contact';
 import Login from './components/Login';
+import Register from './components/Register';
 import MembersHome from './components/members/MembersHome';
 import MapPage from './components/members/MapPage';
 import PlotHolders from './components/members/PlotHolders';
@@ -21,6 +22,7 @@ function App() {
           <Route path="events" element={<Events />} />
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
         </Route>
         <Route path="members" element={<Home />} >
           <Route index element={<MembersHome />} />
