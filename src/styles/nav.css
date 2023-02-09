@@ -21,3 +21,13 @@ transition: 200ms;
 .strip a:hover {
 background-color: #eee;
 }
+
+button {
+    font-size: 19px;
+    border: none;
+    background-color: white;
+}
+
+button:hover {
+background-color: #eee;
+}
