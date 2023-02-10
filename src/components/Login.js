@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth, findGuestByEmail, logInWithEmailAndPassword, logout } from '../firebase';
+import { auth, findGuestByEmail, logInWithUserNameAndPassword, logout } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { storeGuest } from './utilities';
 import '../styles/login.css';
 
 function Login({ guest, setGuest, guestLevel, setGuestLevel }) {
-    const [email, setEmail] = useState("");
+    const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
@@ -38,15 +38,20 @@ function Login({ guest, setGuest, guestLevel, setGuestLevel }) {
         storeGuest(newGuest)
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+        logInWithUserNameAndPassword(userName, password);
+    }
+
   return (
     <div className='login'>
-        <div className='login__container'>
+        <form className='login__container' onSubmit={onSubmit}>
             <input 
             className='login__textBox'
             type='text'
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            placeholder="Email address" />
+            value={userName}
+            onChange={(e)=>setUserName(e.target.value)}
+            placeholder="User name" />
             <input 
             className='login__textBox'
             type='password'
@@ -54,11 +59,11 @@ function Login({ guest, setGuest, guestLevel, setGuestLevel }) {
             onChange={(e)=>setPassword(e.target.value)}
             placeholder="Password" />
             <button 
-            className='login__btn' 
-            onClick={()=>logInWithEmailAndPassword(email, password)} >
+            type='submit'
+            className='login__btn' >
                 Login
             </button>
-        </div>
+        </form>
     </div>
   )
 }

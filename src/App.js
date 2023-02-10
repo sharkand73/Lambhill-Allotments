@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import HomeContent from './components/HomeContent';
@@ -11,12 +11,14 @@ import Register from './components/Register';
 import MembersHome from './components/members/MembersHome';
 import MapPage from './components/members/MapPage';
 import PlotHolders from './components/members/PlotHolders';
+import { getData } from './components/utilities';
 
 
 function App() {
 
-  const [guest, setGuest] = useState(null);
-  const [guestLevel, setGuestLevel] = useState(0);
+  const [guest, setGuest] = useState(getData().guest);
+  const [guestLevel, setGuestLevel] = useState(getData().guestLevel);
+  //useEffect(() => console.log(`Stored guest: ${getData().guest.userName}`), []);
 
   return (
     <Router>
