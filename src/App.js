@@ -11,7 +11,7 @@ import Register from './components/Register';
 import MembersHome from './components/members/MembersHome';
 import MapPage from './components/members/MapPage';
 import PlotHolders from './components/members/PlotHolders';
-import { getData } from './components/utilities';
+import { getData } from './utilities/helper';  
 
 
 function App() {

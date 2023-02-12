@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link, Outlet } from 'react-router-dom';
 import { auth, logout } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { storeGuest } from './utilities';
+import { storeGuest, navItems } from '../utilities/helper';
 import '../styles/nav.css';
 
 export default function Home({ guest, guestLevel, setGuest, setGuestLevel }) {
 
     const [user, loading, error] = useAuthState(auth);
-
-    const navItems = [
-        {title: 'Home', link: '/', level: 0},
-        {title: 'About', link: 'about', level: 0},
-        {title: 'Events', link: 'events', level: 0},
-        {title: 'Contact', link: 'contact', level: 0},
-        {title: 'Map', link: 'map', level: 1},
-        {title: 'Plotholders', link: 'plotholders', level: 2}
-    ];
 
     const signout = () => {
         logout();

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, findGuestByEmail, logInWithUserNameAndPassword, logout } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { storeGuest } from './utilities';
+import { storeGuest } from '../utilities/helper';
 import '../styles/login.css';
 
 function Login({ guest, setGuest, guestLevel, setGuestLevel }) {
