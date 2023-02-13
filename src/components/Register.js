@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
-import { auth, registerWithEmailAndPassword } from '../firebase';
+import { auth } from '../firebase';
+import { registerWithEmailAndPassword } from '../utilities/authService';
 import '../styles/register.css';
 
 export default function Register() {

@@ -6,7 +6,7 @@ const guestsRef = collection(db, guestCollection);
 const authProvider = 'local';
 
 // Gets a guest from the guests (users) collection by its uid
-export const getGuest = async function(uid){
+const getGuest = async function(uid){
     try {
         // TODO: fix this
         const q = query(guestsRef, where('uid', '==', uid));
@@ -22,7 +22,7 @@ export const getGuest = async function(uid){
 }
 
 // Adds a guest to the guests (users) collection
-export const addGuest = async function(guest){
+const addGuest = async function(guest){
     try {
         await addDoc(guestsRef, { 
             uid: guest.uid, 
@@ -38,7 +38,7 @@ export const addGuest = async function(guest){
 }
 
 // Updates a guest in the guests (users) collection
-export const updateGuest = async function(guest){
+const updateGuest = async function(guest){
     try {
         // TODO: fix this
         await updateDoc(guestsRef, guest.uid, { 
@@ -54,7 +54,7 @@ export const updateGuest = async function(guest){
 }
 
 // Deletes a guest from the guests (users) collection
-export const deleteGuest = async function(uid){
+const deleteGuest = async function(uid){
     try {
         // TODO: fix this
         await deleteDoc(guestsRef, uid);
@@ -94,3 +94,5 @@ const findGuestByEmail = async(email) => {
         alert(err.message);
     }
 }
+
+export { getGuest, addGuest, updateGuest, deleteGuest, findGuestByEmail, findGuestByUserName };

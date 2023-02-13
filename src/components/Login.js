@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { auth, findGuestByEmail, logInWithUserNameAndPassword, logout } from '../firebase';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { logInWithUserNameAndPassword, logout } from '../utilities/authService';
+import { findGuestByEmail } from '../utilities/guestRepository';
 import { storeGuest } from '../utilities/helper';
+import Loading from './Loading';
 import '../styles/login.css';
 
-function Login({ guest, setGuest, guestLevel, setGuestLevel }) {
+function Login({ setGuest, guestLevel, setGuestLevel }) {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (loading){
-            return;  // add loading component
-        }
+        // if (loading){
+        //     return;
+        // }
         if (user){
             //console.log(user);
             console.log(user.email);    
@@ -30,7 +33,7 @@ function Login({ guest, setGuest, guestLevel, setGuestLevel }) {
             }
         });
         }
-    }, [loading, user]);
+    }, [user]);
 
     const signin = (newGuest) => {
         setGuest(newGuest);
@@ -43,6 +46,13 @@ function Login({ guest, setGuest, guestLevel, setGuestLevel }) {
         logInWithUserNameAndPassword(userName, password);
     }
 
+    if (loading){
+        return (
+            <div className='loading'>
+                <Loading />
+            </div>
+        );
+    }
   return (
     <div className='login'>
         <form className='login__container' onSubmit={onSubmit}>

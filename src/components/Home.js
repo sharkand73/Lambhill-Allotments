@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom';
-import { auth, logout } from '../firebase';
+import { auth } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { logout } from '../utilities/authService';
 import { storeGuest, navItems } from '../utilities/helper';
 import '../styles/nav.css';
 
