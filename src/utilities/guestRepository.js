@@ -1,4 +1,4 @@
-import { query, collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, where } from "firebase/firestore";
+import { query, collection, doc, getDocs, getDoc, addDoc, updateDoc, deleteDoc, where } from "firebase/firestore";
 import { db } from "../firebase";
 
 const guestCollection = 'users';
@@ -8,13 +8,12 @@ const authProvider = 'local';
 // Gets a guest from the guests (users) collection by its uid
 const getGuest = async function(uid){
     try {
-        // TODO: fix this
-        const q = query(guestsRef, where('uid', '==', uid));
-        const querySnapshot = await getDocs(q);
-        if(querySnapshot.empty){
+        const docRef = doc(db, guestCollection, uid);
+        const docSnapshot = await getDoc(docRef);
+        if(!docSnapshot){
             return null;
         }
-        return querySnapshot.docs[0].data();  
+        return docSnapshot.data();  
     }
     catch(err){
         alert(err.message);
@@ -40,8 +39,8 @@ const addGuest = async function(guest){
 // Updates a guest in the guests (users) collection
 const updateGuest = async function(guest){
     try {
-        // TODO: fix this
-        await updateDoc(guestsRef, guest.uid, { 
+        const docRef = doc(db, guestCollection, guest.uid);
+        await updateDoc(docRef, { 
             userName: guest.userName, 
             authProvider, 
             email: guest.email, 
@@ -56,8 +55,8 @@ const updateGuest = async function(guest){
 // Deletes a guest from the guests (users) collection
 const deleteGuest = async function(uid){
     try {
-        // TODO: fix this
-        await deleteDoc(guestsRef, uid);
+        const docRef = doc(db, guestCollection, uid)
+        await deleteDoc(docRef, uid);
     }
     catch(err){
         alert(err.message);

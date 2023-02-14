@@ -25,9 +25,11 @@
     color: white;
     background-color: black;
   }
-  .login__google {
-    background-color: #4285f4;
+
+  .login_btn:hover {
+    background-color: gray;
   }
+  
   .login div {
     margin-top: 7px;
   }

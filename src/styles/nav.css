@@ -7,27 +7,42 @@ padding: 10px 4%;
 font-size: larger;
 }
 
-.strip a {
+.link {
 color: #444;
 text-decoration: none;
-border-color: #444;
-border-width: 1px;
-border-style: solid;
 padding: 4px;
 margin: 10px;
+border-color: #fff;
+border-width: 1px;
+border-style: solid;
 transition: 200ms;
 }
 
-.strip a:hover {
-background-color: #eee;
+.link:hover {
+    color: #000;
+    border-color: #444;
 }
 
+.link:hover, .selected:hover, button:hover {
+    background-color: #efefef;
+}
+
+.selected {
+    color: #000;
+    text-decoration: none;
+    padding: 4px;
+    margin: 10px;
+    border-color: #444;
+    border-width: 1px;
+    border-style: solid;
+    transition: 200ms;
+    }
+
 button {
-    font-size: 19px;
+    font-size: 19px;    
     border: none;
     background-color: white;
 }
 
-button:hover {
-background-color: #eee;
-}
+
+
