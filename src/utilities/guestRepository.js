@@ -10,10 +10,7 @@ const getGuest = async function(uid){
     try {
         const docRef = doc(db, guestCollection, uid);
         const docSnapshot = await getDoc(docRef);
-        if(!docSnapshot){
-            return null;
-        }
-        return docSnapshot.data();  
+        return docSnapshot ? docSnapshot.data(): null;  
     }
     catch(err){
         alert(err.message);

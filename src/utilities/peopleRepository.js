@@ -1,4 +1,4 @@
-import { query, collection, getDocs, getDoc, addDoc, updateDoc, deleteDoc, where, orderBy } from "firebase/firestore";
+import { query, collection, doc, getDocs, getDoc, addDoc, updateDoc, deleteDoc, where, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 
 const peopleCollection = 'people';
@@ -19,12 +19,12 @@ export const getPeople = async function(){
 // Gets a person from the people collection by their uid
 export const getPerson = async function(uid){
     try {
-        // TODO: fix this
-        const person = await getDoc(peopleRef.docs[uid])
-        return person;  
+        const docRef = doc(db, peopleCollection, uid);
+        const docSnapshot = await getDoc(docRef);
+        return docSnapshot ? docSnapshot.data(): null;    
     }
     catch(err){
-        alert(err.message);
+        console.log(err.message);
         return null;
     }
 }
@@ -53,8 +53,8 @@ export const addPerson = async function(person){
 // Updates a person in the people collection
 export const updatePerson = async function(person){
     try {
-        // TODO: fix this
-        await updateDoc(peopleRef.docs[person.uid], { 
+        const docRef = doc(db, peopleCollection, person.uid);
+        await updateDoc(docRef, { 
             firstName: person.firstName, 
             lastName: person.lastName, 
             dateJoined: person.dateJoined,
@@ -76,8 +76,8 @@ export const updatePerson = async function(person){
 // Deletes a person from the people collection
 export const deletePerson = async function(uid){
     try {
-        // TODO: fix this
-        await deleteDoc(peopleRef.docs[uid]);
+        const docRef = doc(db, peopleCollection, uid);
+        await deleteDoc(docRef);
     }
     catch(err){
         alert(err.message);
@@ -92,7 +92,6 @@ const getPlotholders = async function(){
         if(querySnapshot.empty){
             return null;
         }
-        // TODO: do we need map?
         return querySnapshot.docs.map(d => d.data());  
     }
     catch (err){
@@ -119,7 +118,10 @@ const getWaitingList = async function(){
 const findByPlotName = async function(plotName){
     const people = await getPeople();
     // TODO: this might not work
-    return people.filter(p => p.plots.indexOf(plotName) != -1);
+    return people.filter(p => {
+        let plots = p.plots.split(',');
+        return plots.indexOf(plotName) != -1;
+    });        
 }
 
 export { getPeople, getPerson, addPerson, updatePerson, deletePerson, findByPlotName, getPlotholders, getWaitingList };

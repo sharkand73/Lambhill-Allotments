@@ -11,9 +11,24 @@ export const getData = () => {
 
 export const navItems = [
     {title: 'Home', link: '/', level: 0},
-    {title: 'About', link: 'about', level: 0},
-    {title: 'Events', link: 'events', level: 0},
-    {title: 'Contact', link: 'contact', level: 0},
-    {title: 'Map', link: 'map', level: 1},
-    {title: 'Plotholders', link: 'plotholders', level: 2}
+    {title: 'About', link: '/about', level: 0},
+    {title: 'Events', link: '/events', level: 0},
+    {title: 'Contact', link: '/contact', level: 0},
+    {title: 'Map', link: '/members/map', level: 1},
+    {title: 'Plotholders', link: '/members/plotholders', level: 2},
+    {title: 'WaitingList', link: '/members/waitinglist', level: 2},
 ];
+
+export const emptyPerson = { 
+    firstName: "", 
+    lastName: "", 
+    dateJoined: new Date(),
+    address: "",
+    phoneNumber: "",
+    email: "",
+    altEmail: "", 
+    onWaitingList: false,
+    waitingListPosition: 0,
+    joinedWaitingList: null,
+    plots: ""
+}

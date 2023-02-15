@@ -23,7 +23,8 @@ export default function Register() {
             alert("Please select a user level");
             return;
         }
-        registerWithEmailAndPassword(userName, level, email, password);
+        const guestModel = { userName, level, email, password };
+        registerWithEmailAndPassword(guestModel);
     }
 
     useEffect(() => {
@@ -38,6 +39,7 @@ export default function Register() {
     useEffect(() => {
         console.log(level);
     }, [level]);
+
     return (
         <div className="register">
             <div className="register__container">
@@ -51,7 +53,7 @@ export default function Register() {
                 <select 
                 className="register__textBox" 
                 value={level}
-                onChange={(e) => setLevel(e.target.value)}>
+                onChange={(e) => setLevel(parseInt(e.target.value))}>
                     <option disabled value={0}>User Level</option>
                     <option value={1}>Plotholder</option>
                     <option value={2}>Committee</option>

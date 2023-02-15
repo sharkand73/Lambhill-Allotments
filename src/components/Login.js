@@ -28,7 +28,7 @@ function Login({ setGuest, setGuestLevel }) {
             .then((newGuest) => {
             if (newGuest){
                 signin(newGuest);
-                navigate('/');
+                navigate('/members');
             }
             else {
                 logout();

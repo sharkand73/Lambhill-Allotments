@@ -8,7 +8,7 @@ const logInWithUserNameAndPassword = async(userName, password) => {
     const email = guest ? guest.email : null;
     try {
         console.log("Signing in...");
-        return await signInWithEmailAndPassword(auth, email, password);
+        return await signInWithEmailAndPassword(email, password);
     }
     catch (err){
         console.error(err);
