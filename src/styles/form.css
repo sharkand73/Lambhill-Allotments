@@ -1,24 +1,25 @@
 .form-container {
-    height: 80vh;
+    /* height: 80vh;
     width: 100vw;
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 30px;
+    justify-content: center; */
+    width: 38%;
   }
 
   .form {
     display: flex;
     flex-direction: column;
-    width: 40%;
+    width: 100%;
     text-align: center;
     background-color: #dcdcdc;
-    padding: 30px;
+    padding: 8px;
   }
 
   .form header {
     background-color: black;
     color: white;
+    padding: 10px;
   }
 
   .form-group label {
@@ -32,16 +33,17 @@
     padding: 5px;
     font-size: 14px;
     margin-bottom: 5px;
-    width: 14em;
+    width: 58%;
   }
 
   .submit {
     padding: 10px;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 79%;
     border: none;
     color: white;
     background-color: black;
+    width: 4em;
   }
  
   .form div {

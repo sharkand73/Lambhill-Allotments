@@ -9,7 +9,7 @@ export default function PlotHolders({ guestLevel }) {
 
   const plotHolders = people;
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (guestLevel === 1){
         navigate('map');
@@ -17,7 +17,7 @@ export default function PlotHolders({ guestLevel }) {
   },[]);
 
   return (
-    <div className="plotHolders-container">
+    <div className="container">
       <NewPerson waitingList={false} />
       <PersonList people={people} />
     </div>

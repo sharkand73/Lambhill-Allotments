@@ -35,31 +35,101 @@ export const getEmptyPerson = () => ({
 
 export const people = [
     {
+        uid: '1',
         firstName: 'Andrew',
-        lastName: 'Sharkey'
+        lastName: 'Sharkey',
+        dateJoined: '2017-04-03',
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: false,
+        waitingListPosition: 0,
+        joinedWaitingList: null,
+        plots: "Plot40"
     },
     {
+        uid: '2',
         firstName: 'Sean',
-        lastName: 'McnNamara'
+        lastName: 'McNamara',
+        dateJoined: '2018-05-01',
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: false,
+        waitingListPosition: 0,
+        joinedWaitingList: null,
+        plots: "Plot16, plot17"
     },
     {
+        uid: '3',
         firstName: 'Frank',
-        lastName: 'Hall'
+        lastName: 'Hall',
+        dateJoined: '2012-02-01',
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: false,
+        waitingListPosition: 0,
+        joinedWaitingList: null,
+        plots: "Plot4, plot44"
     },
     {
+        uid: '4',
         firstName: 'Ania',
-        lastName: 'Neisser'
+        lastName: 'Neisser',
+        dateJoined: '2018-05-01',
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: false,
+        waitingListPosition: 0,
+        joinedWaitingList: null,
+        plots: "Plot16, plot17"
     },
     {
+        uid: '5',
         firstName: 'Stephen',
-        lastName: 'Finch'
+        lastName: 'Finch',
+        dateJoined: '2019-05-01',
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: false,
+        waitingListPosition: 0,
+        joinedWaitingList: null,
+        plots: "Plot3, plot67"
     },
     {
+        uid: '6',
         firstName: 'Heather',
-        lastName: 'Read'
+        lastName: 'Read',
+        dateJoined: '2019-03-01',
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: false,
+        waitingListPosition: 0,
+        joinedWaitingList: null,
+        plots: "Plot64"
     },
     {
+        uid: '7',
         firstName: 'Nikki',
-        lastName: 'Newbert'
+        lastName: 'Newbert',
+        dateJoined: '2018-02-01',
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: false,
+        waitingListPosition: 0,
+        joinedWaitingList: null,
+        plots: "Plot21"
     }
 ];
