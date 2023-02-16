@@ -19,10 +19,10 @@ export const navItems = [
     {title: 'WaitingList', link: '/members/waitinglist', level: 2},
 ];
 
-export const emptyPerson = { 
+export const getEmptyPerson = () => ({ 
     firstName: "", 
     lastName: "", 
-    dateJoined: new Date(),
+    dateJoined: new Date().toISOString().slice(0,10),
     address: "",
     phoneNumber: "",
     email: "",
@@ -31,4 +31,35 @@ export const emptyPerson = {
     waitingListPosition: 0,
     joinedWaitingList: null,
     plots: ""
-}
+});
+
+export const people = [
+    {
+        firstName: 'Andrew',
+        lastName: 'Sharkey'
+    },
+    {
+        firstName: 'Sean',
+        lastName: 'McnNamara'
+    },
+    {
+        firstName: 'Frank',
+        lastName: 'Hall'
+    },
+    {
+        firstName: 'Ania',
+        lastName: 'Neisser'
+    },
+    {
+        firstName: 'Stephen',
+        lastName: 'Finch'
+    },
+    {
+        firstName: 'Heather',
+        lastName: 'Read'
+    },
+    {
+        firstName: 'Nikki',
+        lastName: 'Newbert'
+    }
+];

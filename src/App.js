@@ -11,7 +11,6 @@ import Register from './components/Register';
 import MembersHome from './components/members/MembersHome';
 import MapPage from './components/members/MapPage';
 import PlotHolders from './components/members/PlotHolders';
-import NewPerson from './components/members/NewPerson';
 import WaitingList from './components/members/WaitingList';
 import MembersRedirect from './components/members/MembersRedirect';
 import { getData, storeGuest } from './utilities/helper';
@@ -45,7 +44,7 @@ function App() {
         <Route path="members" element={<MembersHome guest={guest} guestLevel={guestLevel} signOut={signOut} />} >
           <Route index element={<MembersRedirect guestLevel={guestLevel} signOut={signOut} />} />
           <Route path="map" element={<MapPage />} />
-          <Route path="plotholders" element={<NewPerson guestLevel={guestLevel} />} />
+          <Route path="plotholders" element={<PlotHolders guestLevel={guestLevel} />} />
           <Route path="waitinglist" element={<WaitingList />} />
         </Route>
       </Routes>

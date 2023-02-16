@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { emptyPerson } from '../../utilities/helper';
+import { getEmptyPerson } from '../../utilities/helper';
 import '../../styles/form.css';
 
-export default function NewPerson({ waitingList, guestLevel }) {
+export default function NewPerson({ waitingList }) {
 
-    const [personModel, setPersonModel] = useState(emptyPerson);
+    const [personModel, setPersonModel] = useState(getEmptyPerson());
     const navigate = useNavigate();
-    useEffect(() => {
-        if (guestLevel === 1){
-            navigate('map');
-        } 
-    },[]);
+   
+
+    const getHeading = () => {
+        return waitingList ? 'New Waiting List Member' : 'New Plotholder'
+    }
+
     const handleChange = (e) => {
         let tempModel = {...personModel};
         tempModel[e.target.name] = e.target.value;
@@ -23,42 +24,45 @@ export default function NewPerson({ waitingList, guestLevel }) {
     }
 
   return (
-    <div className='form'>
-        <div className='form-group'>
-            <label>First name</label>
-            <input type='text' className="form-input" name='firstName' value={personModel.firstName} onChange={handleChange} />
+    <div className='form-container'>
+        <div className='form'>
+            <header>{getHeading()}</header>
+            <div className='form-group'>
+                <label>First name</label>
+                <input type='text' className="form-input" name='firstName' value={personModel.firstName} onChange={handleChange} />
+            </div>
+            <div className='form-group'>
+                <label>Last name</label>
+                <input type='text' className="form-input" name='lastName' value={personModel.lastName} onChange={handleChange} />
+            </div>
+            {!waitingList && <div className='form-group'>
+                <label>Date joined</label>
+                <input type='date' className="form-input" name='dateJoined' value={personModel.dateJoined} onChange={handleChange} />
+            </div>}
+            {waitingList && <div className='form-group'>
+                <label>Date joined</label>
+                <input type='date' className="form-input" name='joinedWaitingList' value={personModel.joinedWaitingList} onChange={handleChange} />
+            </div>}
+            <div className='form-group'>
+                <label>Address</label>
+                <textarea type='text' className="form-input" name='address' value={personModel.address} onChange={handleChange} ></textarea>
+            </div>
+            <div className='form-group'>
+                <label>Telephone</label>
+                <input type='text' className="form-input" name='phoneNumber' value={personModel.phoneNumber} onChange={handleChange} />
+            </div>
+            <div className='form-group'>
+                <label>Email</label>
+                <input type='text' className="form-input" name='email' value={personModel.email} onChange={handleChange} />
+            </div>
+            <div className='form-group'>
+                <label>Alt email</label>
+                <input type='text' className="form-input" name='altEmail' value={personModel.altEmail} onChange={handleChange} />
+            </div>
+            <button className="submit" onClick={onSubmit}>
+                Add
+            </button>
         </div>
-        <div className='form-group'>
-            <label>Last name</label>
-            <input type='text' className="form-input" name='lastName' value={personModel.lastName} onChange={handleChange} />
-        </div>
-        {!waitingList && <div className='form-group'>
-            <label>Date joined</label>
-            <input type='date' className="form-input" name='dateJoined' value={personModel.dateJoined} onChange={handleChange} />
-        </div>}
-        {waitingList && <div className='form-group'>
-            <label>Date joined</label>
-            <input type='date' className="form-input" name='joinedWaitingList' value={personModel.joinedWaitingList} onChange={handleChange} />
-        </div>}
-        <div className='form-group'>
-            <label>Address</label>
-            <input type='text' className="form-input" name='address' value={personModel.address} onChange={handleChange} />
-        </div>
-        <div className='form-group'>
-            <label>Tel</label>
-            <input type='text' className="form-input" name='phoneNumber' value={personModel.phoneNumber} onChange={handleChange} />
-        </div>
-        <div className='form-group'>
-            <label>Email</label>
-            <input type='text' className="form-input" name='email' value={personModel.email} onChange={handleChange} />
-        </div>
-        <div className='form-group'>
-            <label>Alt email</label>
-            <input type='text' className="form-input" name='altEmail' value={personModel.altEmail} onChange={handleChange} />
-        </div>
-        <button className="submit" onClick={onSubmit}>
-            Add
-        </button>
     </div>
   )
 }

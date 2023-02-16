@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { navItems } from '../utilities/helper';
 
 export default function NavBar({ guest, guestLevel, signOut }) {
-    
+
     const navBar = navItems.filter(item => guestLevel >= item.level)
                 .map((item, index) => (
                 <NavLink to={item.link} key={index} className={ ({isActive}) => isActive ? 'selected' : 'link' }>
@@ -16,7 +16,7 @@ export default function NavBar({ guest, guestLevel, signOut }) {
                         Login
                     </button>
                 </NavLink>;
-    const logOut = <NavLink to="/">
+    const logOut = <NavLink to="/" className='link'>
                     <button onClick={()=>signOut()}>
                         Logout
                     </button>

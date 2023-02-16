@@ -1,22 +1,40 @@
-.form {
+.form-container {
     height: 80vh;
     width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
   }
-  .form-group {
+
+  .form {
     display: flex;
     flex-direction: column;
+    width: 40%;
     text-align: center;
     background-color: #dcdcdc;
     padding: 30px;
   }
-  .form-group input {
-    padding: 10px;
-    font-size: 18px;
-    margin-bottom: 10px;
+
+  .form header {
+    background-color: black;
+    color: white;
   }
+
+  .form-group label {
+    display: inline-block;
+    width: 8em;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .form-group input, .form-group textarea {
+    padding: 5px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    width: 14em;
+  }
+
   .submit {
     padding: 10px;
     font-size: 18px;
