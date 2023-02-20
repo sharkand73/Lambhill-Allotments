@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getEmptyPerson } from '../../utilities/helper';
 import '../../styles/form.css';
-import PersonDetail from './PersonDetail';
+import PersonDetail from './PersonForm';
 
 export default function NewPerson({ waitingList }) {
 

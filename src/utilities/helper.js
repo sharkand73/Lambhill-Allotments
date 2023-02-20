@@ -33,7 +33,7 @@ export const getEmptyPerson = () => ({
     plots: ""
 });
 
-export const people = [
+export const getPeople = () => [
     {
         uid: '1',
         firstName: 'Andrew',

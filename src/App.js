@@ -9,12 +9,14 @@ import Contact from './components/Contact';
 import Login from './components/Login';
 import Register from './components/Register';
 import MembersHome from './components/members/MembersHome';
-import MapPage from './components/members/MapPage';
-import PlotHolders from './components/members/PlotHolders';
-import WaitingList from './components/members/WaitingList';
+import MapPage from './screens/MapPage';
+import PlotHolders from './screens/PlotHolders';
+import WaitingList from './screens/WaitingList';
 import MembersRedirect from './components/members/MembersRedirect';
+import Person from './components/members/Person';
 import { getData, storeGuest } from './utilities/helper';
 import { logout } from './utilities/authService';
+import NewPerson from './components/members/NewPerson';
 
 function App() {
 
@@ -44,8 +46,11 @@ function App() {
         <Route path="members" element={<MembersHome guest={guest} guestLevel={guestLevel} signOut={signOut} />} >
           <Route index element={<MembersRedirect guestLevel={guestLevel} signOut={signOut} />} />
           <Route path="map" element={<MapPage />} />
-          <Route path="plotholders" element={<PlotHolders guestLevel={guestLevel} />} />
-          <Route path="waitinglist" element={<WaitingList />} />
+          <Route path="plotholders" element={<PlotHolders guestLevel={guestLevel} />} >
+            <Route index element={< NewPerson waitingList={false} />} />
+            <Route path=":uid" element={<Person waitingList={false} />} />
+          </Route>
+          <Route path="waitinglist" element={<WaitingList guestLevel={guestLevel} />} />
         </Route>
       </Routes>
     </Router>
