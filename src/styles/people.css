@@ -12,15 +12,26 @@ ul {
     margin-top: 0; 
 }
 
-li {
-    list-style: none;
-    margin: 2px 2px;
-}
-
 a {
     text-decoration: none;
 }
 
+a:visited {
+    color: black;
+}
+
 .list-item {
     width: 10em;
+    list-style: none;
+    margin: 2px 2px;
+    border: solid 2px gray; 
+    color: #444;
+    text-decoration: none;
+    padding: 4px;
+    transition: 200ms;
+}
+    
+.list-item:hover {
+    color: #000;
+    background-color: #efefef;
 }

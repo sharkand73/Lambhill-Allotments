@@ -189,3 +189,11 @@ export const getPeople = () => [
         plots: ""
     }
 ];
+
+export const stringStartsWith = function(mainString, subString){
+    if (!subString){
+        return true;
+    }
+    const l = subString.length;
+    return mainString.slice(0, l).toLowerCase() === subString.toLowerCase();
+}
