@@ -50,7 +50,10 @@ function App() {
             <Route index element={< NewPerson waitingList={false} />} />
             <Route path=":uid" element={<Person waitingList={false} />} />
           </Route>
-          <Route path="waitinglist" element={<WaitingList guestLevel={guestLevel} />} />
+          <Route path="waitinglist" element={<WaitingList guestLevel={guestLevel} />} >
+            <Route index element={< NewPerson waitingList={true} />} />
+            <Route path=":uid" element={<Person waitingList={true} />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

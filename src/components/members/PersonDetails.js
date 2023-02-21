@@ -3,31 +3,25 @@ import PersonForm from './PersonForm';
 
 export default function PersonDetails({ formPerson, waitingList }) {
 
-    const [editing, setEditing] = useState(false);
-    const [personModel, setPersonModel] = useState(null);
+    const [finalPerson, setFinalPerson] = useState(null);
     
     useEffect(() => {
-        setPersonModel(formPerson);
-        //console.log('UseEffect hit!');
-    },[]);
-
-    const onChange = (e) => {
-        let tempModel = {...personModel};
-        tempModel[e.target.name] = e.target.value;
-        setPersonModel(tempModel);
-    }
+        setFinalPerson(formPerson);
+        console.log(`UseEffect hit!\nformPerson: ${formPerson.firstName}`);
+    }, [formPerson]);
 
     const getHeading = () => {
-        return "Person";
+        return `Person: ${formPerson.firstName}`;
     }
 
-    const onSubmit = () => {
+    const onSubmit = (personModel) => {
         console.log(personModel);
     }
 
-    if (!personModel){
+    if (!finalPerson){
+        console.log("Null!");
         return (
-            <div>Jobby</div>
+            <div></div>
         );
     }
   return (
@@ -36,11 +30,7 @@ export default function PersonDetails({ formPerson, waitingList }) {
         <div className='form'>
             <header>{getHeading()}</header>
             <PersonForm 
-            //personModel={personModel} 
-            personModel={personModel} waitingList={waitingList} editing={editing} onChange={onChange}/>
-            {!editing && <button className="edit" onClick={() => setEditing(true)}>Edit</button>}
-            {editing && <button className="cancel" onClick={() => setEditing(false)}>Cancel</button>}
-            {editing && <button className="submit" onClick={onSubmit}>Update</button>}
+            initialPerson={formPerson} waitingList={waitingList} blank={false} onSubmit={onSubmit} />         
         </div>
     </div>
   )

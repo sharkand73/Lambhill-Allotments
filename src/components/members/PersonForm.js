@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-export default function PersonForm({ personModel, waitingList, editing, onChange }) {
+export default function PersonForm({ initialPerson, waitingList, blank, onSubmit }) {
 
-    // const handleChange = (e) => {
-    //     let tempModel = {...personModel};
-    //     tempModel[e.target.name] = e.target.value;
-    //     setPersonModel(tempModel);
-    // }
+    const [editing, setEditing] = useState(blank);
+    const [personModel, setPersonModel] = useState(initialPerson);
+
+    useEffect(() => setPersonModel(initialPerson), [initialPerson]);
+
+    const onChange = (e) => {
+        let tempModel = {...personModel};
+        tempModel[e.target.name] = e.target.value;
+        setPersonModel(tempModel);
+    }
 
     return (
     <>
@@ -42,6 +47,9 @@ export default function PersonForm({ personModel, waitingList, editing, onChange
                 <label>Alt email</label>
                 <input type='text' disabled={!editing} className="form-input" name='altEmail' value={personModel.altEmail} onChange={onChange} />
             </div>
+            {!blank && !editing &&  <button className="edit" onClick={() => setEditing(true)}>Edit</button>}
+            {!blank && editing && <button className="cancel" onClick={() => setEditing(false)}>Cancel</button>}
+            {editing && <button className="submit" onClick={() => onSubmit(personModel)}>Submit</button>}
     </>
   )
 }

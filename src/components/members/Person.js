@@ -6,28 +6,30 @@ import Loading from '../Loading';
 export default function Person({ waitingList }) {
 
     const [error, setError] = useState(false);
-    const [formPerson, setFormPerson] = useState(null);
+    //const [formPerson, setFormPerson] = useState(null);
 
     const { uid } = useParams();
     const context = useOutletContext();
     const people = context.people;
 
-    useEffect(() => getPerson());
+    //useEffect(() => getPerson());
 
     const getPerson = function() {
             if (!people){
             console.log(`uid: ${uid}`);
             setError(true);
-            return;
+            return null;
         }
         const person = people.find(p => p.uid == uid);
-        setFormPerson(person);
         if (!person){
             console.log(`uid: ${uid}`);
             setError(true);
+            return null;
         }
-        //console.log(`getPerson called! ${person.firstName}`);
+        return person;
     }
+
+    const formPerson = getPerson();
 
     if (error){
         return (

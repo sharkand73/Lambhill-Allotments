@@ -19,7 +19,7 @@ export const navItems = [
     {title: 'WaitingList', link: '/members/waitinglist', level: 2},
 ];
 
-export const getEmptyPerson = () => ({ 
+export const getEmptyPerson = (onWaitingList) => ({ 
     firstName: "", 
     lastName: "", 
     dateJoined: new Date().toISOString().slice(0,10),
@@ -27,7 +27,7 @@ export const getEmptyPerson = () => ({
     phoneNumber: "",
     email: "",
     altEmail: "", 
-    onWaitingList: false,
+    onWaitingList,
     waitingListPosition: 0,
     joinedWaitingList: null,
     plots: ""
@@ -131,5 +131,61 @@ export const getPeople = () => [
         waitingListPosition: 0,
         joinedWaitingList: null,
         plots: "Plot21"
+    },
+    {
+        uid: '8',
+        firstName: 'Joe',
+        lastName: 'Bloggs',
+        dateJoined: null,
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: true,
+        waitingListPosition: 1,
+        joinedWaitingList: '2022-08-01',
+        plots: ""
+    },
+    {
+        uid: '9',
+        firstName: 'Alan',
+        lastName: 'Titchmarsh',
+        dateJoined: null,
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: true,
+        waitingListPosition: 2,
+        joinedWaitingList: '2022-09-01',
+        plots: ""
+    },
+    {
+        uid: '10',
+        firstName: 'Charles',
+        lastName: 'Dowding',
+        dateJoined: null,
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: true,
+        waitingListPosition: 3,
+        joinedWaitingList: '2022-10-01',
+        plots: ""
+    },
+    {
+        uid: '11',
+        firstName: 'Graeme',
+        lastName: 'Garden',
+        dateJoined: null,
+        address: "1 Fake Street, Glasgow, G1 1AB",
+        phoneNumber: "07712 345678",
+        email: "fakeguy@fake.com",
+        altEmail: "", 
+        onWaitingList: true,
+        waitingListPosition: 4,
+        joinedWaitingList: '2022-11-01',
+        plots: ""
     }
 ];
