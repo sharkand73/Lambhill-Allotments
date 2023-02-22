@@ -20,11 +20,14 @@ export default function WaitingList({ guestLevel }) {
     setWaitingListMembers(people);
   },[]);
 
+  if (!waitingListMembers){
+    return (<Loading />);
+  }
+  
   return (
     <div className="container">
-      <PersonList people={waitingListMembers ? waitingListMembers : []} />
-      {waitingListMembers && <Outlet context={{ people: waitingListMembers }} />}
-      {!waitingListMembers && <Loading /> }
+      <PersonList people={waitingListMembers} />
+      <Outlet context={{ people: waitingListMembers }} />
     </div>
   )
 }

@@ -21,7 +21,7 @@ export default function MembersRedirect({ guestLevel, signOut }) {
                 break;
             default: 
                 console.log(`Default!\nGuest level: ${guestLevel}`);
-                signOut();
+                //signOut();
                 navigate('/');
         }
     }

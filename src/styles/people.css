@@ -7,9 +7,10 @@
 
 ul {
     font-size: 20px;
-    width: 40%;
-    margin-right: 3em;
+    width: 45%;
+    margin-right: 1em;
     margin-top: 0; 
+    padding-left: 0;
 }
 
 a {
@@ -23,6 +24,8 @@ a:visited {
 .list-item {
     width: 10em;
     list-style: none;
+    display: flex;
+    
     margin: 2px 2px;
     border: solid 2px gray; 
     color: #444;
@@ -34,4 +37,40 @@ a:visited {
 .list-item:hover {
     color: #000;
     background-color: #efefef;
+}
+
+.list-item:hover .del {
+    display: contents;
+}
+
+.list-item-link  {
+    display: block;
+    width: 90%;
+}
+
+.del {
+    color: #d44;
+    display: none;
+    font: 12pt bold;
+}
+
+.del:hover {
+    color: magenta;
+    cursor: pointer;
+}
+
+.filter-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 45%;
+    margin-bottom: 1em;
+}
+
+.filter-text {
+    margin-right: 1em;
+}
+
+.submit:hover {
+    background-color: #333;
 }

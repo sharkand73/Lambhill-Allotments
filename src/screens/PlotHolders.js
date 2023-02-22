@@ -13,21 +13,24 @@ import '../styles/people.css';
 export default function PlotHolders({ guestLevel }) {
 
   const navigate = useNavigate();
-  const [plotholders, setPlotHolders] = useState(null);
+  const [plotHolders, setPlotHolders] = useState(null);
 
   useEffect(() => {
     if (guestLevel === 1){
         navigate('map');
-    } 
+    }
     const people = getPeople().filter(p => !p.onWaitingList);
     setPlotHolders(people);
-  },[]);
+  }, []);
 
+  if (!plotHolders){
+    return (<Loading />);
+  }
+   
   return (
     <div className="container">
-      <PersonList people={plotholders ? plotholders : []} />
-      {plotholders && <Outlet context={{ people: plotholders }} />}
-      {!plotholders && <Loading /> }
+      <PersonList people={plotHolders} />
+      <Outlet context={{ people: plotHolders }} />
     </div>
   )
 }

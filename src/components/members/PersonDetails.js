@@ -7,7 +7,7 @@ export default function PersonDetails({ formPerson, waitingList }) {
     
     useEffect(() => {
         setFinalPerson(formPerson);
-        console.log(`UseEffect hit!\nformPerson: ${formPerson.firstName}`);
+        //console.log(`UseEffect hit!\nformPerson: ${formPerson.firstName}`);
     }, [formPerson]);
 
     const getHeading = () => {
@@ -18,14 +18,16 @@ export default function PersonDetails({ formPerson, waitingList }) {
         console.log(personModel);
     }
 
+    const onDelete = (personModel) => {
+        console.log(`Delete person with uid: ${personModel.uid}`);
+    }
+
     if (!finalPerson){
-        console.log("Null!");
         return (
             <div></div>
         );
     }
   return (
-    //<div>{ personModel.firstName }</div>
     <div className='form-container'>
         <div className='form'>
             <header>{getHeading()}</header>

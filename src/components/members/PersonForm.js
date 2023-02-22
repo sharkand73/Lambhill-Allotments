@@ -49,7 +49,7 @@ export default function PersonForm({ initialPerson, waitingList, blank, onSubmit
             </div>
             {!blank && !editing &&  <button className="edit" onClick={() => setEditing(true)}>Edit</button>}
             {!blank && editing && <button className="cancel" onClick={() => setEditing(false)}>Cancel</button>}
-            {editing && <button className="submit" onClick={() => onSubmit(personModel)}>Submit</button>}
+            {editing && <button className="submit" onClick={() => onSubmit(personModel)}>Submit</button>}            
     </>
   )
 }

@@ -100,7 +100,7 @@ const getPlotholders = async function(){
 }
 
 // Gets the current waiting list 
-const getWaitingList = async function(){
+export const getWaitingList = async function(){
     try {
         const q = query(peopleRef, where('onWaitingList', '==', true), orderBy('waitingListPosition', 'asc'));
         const querySnapshot = await getDocs(q);
@@ -115,7 +115,7 @@ const getWaitingList = async function(){
 }
 
 // Finds people by a given plot name
-const findByPlotName = async function(plotName){
+export const findByPlotName = async function(plotName){
     const people = await getPeople();
     // TODO: this might not work
     return people.filter(p => {
@@ -124,4 +124,4 @@ const findByPlotName = async function(plotName){
     });        
 }
 
-export { getPeople, getPerson, addPerson, updatePerson, deletePerson, findByPlotName, getPlotholders, getWaitingList };
+//export { getPeople, getPerson, addPerson, updatePerson, deletePerson, findByPlotName, getPlotholders, getWaitingList };
