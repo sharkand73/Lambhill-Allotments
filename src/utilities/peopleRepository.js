@@ -7,7 +7,8 @@ const peopleRef = collection(db, peopleCollection);
 // Gets a list of all people from the people collection
 export const getPeople = async function(){
     try {
-        const people = await getDocs(peopleRef).map(d => d.data());
+        const peopleSnapshot = await getDocs(peopleRef)
+        const people = peopleSnapshot.docs.map(d => d.data());
         return people;
     }
     catch(err){
@@ -16,7 +17,7 @@ export const getPeople = async function(){
     }
 }
 
-// Gets a person from the people collection by their uid
+// Gets a person from the people collection by their nickname
 export const getPerson = async function(uid){
     try {
         const docRef = doc(db, peopleCollection, uid);
@@ -85,7 +86,7 @@ export const deletePerson = async function(uid){
 }
 
 // Gets all current plotholders
-const getPlotholders = async function(){
+export const getPlotHolders = async function(){
     try {
         const q = query(peopleRef, where('onWaitingList', '==', false));
         const querySnapshot = await getDocs(q);
@@ -102,7 +103,8 @@ const getPlotholders = async function(){
 // Gets the current waiting list 
 export const getWaitingList = async function(){
     try {
-        const q = query(peopleRef, where('onWaitingList', '==', true), orderBy('waitingListPosition', 'asc'));
+        const q = query(peopleRef, where('onWaitingList', '==', true)
+        , orderBy('joinedWaitingList', 'desc'));
         const querySnapshot = await getDocs(q);
         if(querySnapshot.empty){
             return null;
@@ -110,6 +112,7 @@ export const getWaitingList = async function(){
         return querySnapshot.docs.map(d => d.data());
     }
     catch (err){
+        console.log(err.message);
         alert(err.message);
     }
 }

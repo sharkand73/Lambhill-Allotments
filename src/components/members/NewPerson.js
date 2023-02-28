@@ -17,6 +17,7 @@ export default function NewPerson({ waitingList }) {
     }
 
     const onSubmit = (personModel) => {
+        setFinalPerson(personModel);
         console.log(personModel);
     }
 
