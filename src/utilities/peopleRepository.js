@@ -8,7 +8,13 @@ const peopleRef = collection(db, peopleCollection);
 export const getPeople = async function(){
     try {
         const peopleSnapshot = await getDocs(peopleRef)
-        const people = peopleSnapshot.docs.map(d => d.data());
+        let people = [];
+        peopleSnapshot.docs.forEach(s => {
+            let person = s.data();
+            person.id = s.id;
+            people.push(person);
+        });
+        console.log(people);
         return people;
     }
     catch(err){

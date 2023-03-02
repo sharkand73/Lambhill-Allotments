@@ -51,6 +51,11 @@ export default function PersonForm({ initialPerson, waitingList, blank, onSubmit
             <label>Alt email</label>
             <input type='text' disabled={!editing} className="form-input" name='altEmail' value={personModel.altEmail} onChange={onChange} />
         </div>
+        {!editing && !waitingList && <div className='form-group'>
+            <label>Plots</label>
+            <input type='text' disabled={true} className="form-input" name='plots' value={personModel.plots} />
+        </div>}
+
         {!blank && !editing &&  <button className="edit" onClick={() => setEditing(true)}>Edit</button>}
         {!blank && editing && <button className="cancel" onClick={() => setEditing(false)}>Cancel</button>}
         {editing && <button className="submit" onClick={() => onSubmit(personModel)}>Submit</button>}            

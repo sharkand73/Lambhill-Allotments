@@ -26,20 +26,20 @@ export default function PersonList({ people }) {
         setFilteredPeople(tempList); 
     }
 
-    const deletePerson = (nickname) => console.log(nickname);
+    const deletePerson = (id) => console.log(id);
 
-    const DelItem = ({nickname}) => (
-        <div className='del' onClick={() => deletePerson(nickname)}>
+    const DelItem = ({ id }) => (
+        <div className='del' onClick={() => deletePerson(id)}>
             X
         </div>
     );
 
     const listItem = (person, index) => (
         <li className='list-item' key={index}>
-            <Link className='list-item-link' to={person.nickName}>
+            <Link className='list-item-link' to={person.id}>
                 {person.firstName} {person.lastName}
             </Link>
-            <DelItem nickName={person.nickName} />
+            <DelItem id={person.id} />
         </li>
     );
 

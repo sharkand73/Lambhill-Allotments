@@ -13,7 +13,7 @@ import '../styles/people.css';
 export default function PlotHolders({ guestLevel }) {
 
   const navigate = useNavigate();
-  const [allPeople, setAllPeople] = useState([]);
+  const [allPeople, setAllPeople] = useState([]);  // Need?
   const [plotHolders, setPlotHolders] = useState([]);
 
   useEffect(() => {
@@ -21,7 +21,11 @@ export default function PlotHolders({ guestLevel }) {
         navigate('map');
     }
     getPeople()
-    .then(people => processData(people));
+    .then(people => {
+      processData(people);
+      console.log(`All people: ${people.map(p=>p.firstName)}`);
+      console.log(`Plotholders: ${plotHolders.map(p=>p.firstName)}`);
+    });
   }, []);
 
   const processData = function(peopleData){
@@ -39,7 +43,7 @@ export default function PlotHolders({ guestLevel }) {
   return (
     <div className="container">
       <PersonList people={plotHolders} />
-      <Outlet context={{ people: plotHolders, allPeople }} />
+      <Outlet context={{ people: plotHolders }} />
     </div>
   )
 }

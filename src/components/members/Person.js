@@ -8,7 +8,7 @@ export default function Person({ waitingList }) {
     const [error, setError] = useState(false);
     const [formPerson, setFormPerson] = useState(null);
 
-    const { nickName } = useParams();
+    const { id } = useParams();
     const context = useOutletContext();
     const people = context.people;
 
@@ -16,13 +16,13 @@ export default function Person({ waitingList }) {
 
     const getPerson = function() {
             if (!people){
-            console.log(`nickname: ${nickName}`);
+            console.log(`No people`);
             setError(true);
             return null;
         }
-        const person = people.find(p => p.nickName == nickName);
+        const person = people.find(p => p.id == id);
         if (!person){
-            console.log(`nickname: ${nickName}`);
+            console.log(`id: ${id}`);
             setError(true);
             return null;
         }

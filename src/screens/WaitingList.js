@@ -11,7 +11,7 @@ import PersonList from '../components/members/PersonList';
 export default function WaitingList({ guestLevel }) {
   const navigate = useNavigate();
   const [waitingListMembers, setWaitingListMembers] = useState([]);
-  const [allPeople, setAllPeople] = useState([]);
+  const [allPeople, setAllPeople] = useState([]); // Need?
 
   useEffect(() => {
     if (guestLevel === 1){
@@ -37,7 +37,7 @@ export default function WaitingList({ guestLevel }) {
   return (
     <div className="container">
       <PersonList people={waitingListMembers} />
-      <Outlet context={{ people: waitingListMembers, allPeople }} />
+      <Outlet context={{ people: waitingListMembers }} />
     </div>
   )
 }

@@ -48,11 +48,11 @@ function App() {
           <Route path="map" element={<MapPage />} />
           <Route path="plotholders" element={<PlotHolders guestLevel={guestLevel} />} >
             <Route index element={< NewPerson waitingList={false} />} />
-            <Route path=":nickName" element={<Person waitingList={false} />} />
+            <Route path=":id" element={<Person waitingList={false} />} />
           </Route>
           <Route path="waitinglist" element={<WaitingList guestLevel={guestLevel} />} >
             <Route index element={< NewPerson waitingList={true} />} />
-            <Route path=":nickName" element={<Person waitingList={true} />} />
+            <Route path=":id" element={<Person waitingList={true} />} />
           </Route>
         </Route>
       </Routes>

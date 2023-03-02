@@ -18,14 +18,8 @@ export default function PersonDetails({ formPerson, waitingList }) {
         console.log(personModel);
     }
 
-    const onDelete = (personModel) => {
-        console.log(`Delete person with uid: ${personModel.uid}`);
-    }
-
     if (!finalPerson){
-        return (
-            <div></div>
-        );
+        return;
     }
   return (
     <div className='form-container'>
