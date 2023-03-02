@@ -29,7 +29,6 @@ export const getEmptyPerson = (onWaitingList) => ({
     email: "",
     altEmail: "", 
     onWaitingList,
-    waitingListPosition: 0,
     joinedWaitingList: new Date().toISOString().slice(0,10),
     plots: ""
 });

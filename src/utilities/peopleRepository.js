@@ -1,4 +1,4 @@
-import { query, collection, doc, getDocs, getDoc, addDoc, updateDoc, deleteDoc, where, orderBy } from "firebase/firestore";
+import { query, collection, doc, getDocs, getDoc, addDoc, setDoc, deleteDoc, where, orderBy } from "firebase/firestore";
 import { db } from "../firebase";
 
 const peopleCollection = 'people';
@@ -37,43 +37,16 @@ export const getPerson = async function(uid){
 }
 
 // Adds a person to the people collection
-export const addPerson = async function(person){
+export const setPerson = async function(person, id){
     try {
-        await addDoc(peopleRef, { 
-            firstName: person.firstName, 
-            lastName: person.lastName, 
-            dateJoined: person.dateJoined,
-            address: person.address,
-            phoneNumber: person.phoneNumber,
-            email: person.email,
-            altEmail: person.altEmail, 
-            onWaitingList: person.onWaitingList,
-            joinedWaitingList: person.joinedWaitingList,
-            plots: person.plots
-        });
-    }
-    catch(err){
-        alert(err.message);
-    }
-}
-
-// Updates a person in the people collection
-export const updatePerson = async function(person){
-    try {
-        const docRef = doc(db, peopleCollection, person.uid);
-        await updateDoc(docRef, { 
-            firstName: person.firstName, 
-            lastName: person.lastName, 
-            dateJoined: person.dateJoined,
-            address: person.address,
-            phoneNumber: person.phoneNumber,
-            email: person.email,
-            altEmail: person.altEmail, 
-            onWaitingList: person.onWaitingList,
-            waitingListPosition: person.waitingListPosition,
-            joinedWaitingList: person.joinedWaitingList,
-            plots: person.plots
-        });
+        if (id){
+            const docRef = doc(db, peopleCollection, id);
+            delete person.id;
+            await setDoc(docRef, person);
+        }
+        else {
+            await addDoc(peopleRef, person);
+        }
     }
     catch(err){
         alert(err.message);

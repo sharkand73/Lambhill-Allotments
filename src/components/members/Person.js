@@ -12,7 +12,7 @@ export default function Person({ waitingList }) {
     const context = useOutletContext();
     const people = context.people;
 
-    useEffect(() => setFormPerson(getPerson()), []);
+    useEffect(() => setFormPerson(getPerson()));
 
     const getPerson = function() {
             if (!people){

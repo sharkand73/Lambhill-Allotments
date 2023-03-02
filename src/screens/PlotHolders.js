@@ -26,7 +26,7 @@ export default function PlotHolders({ guestLevel }) {
       console.log(`All people: ${people.map(p=>p.firstName)}`);
       console.log(`Plotholders: ${plotHolders.map(p=>p.firstName)}`);
     });
-  }, []);
+  });
 
   const processData = function(peopleData){
     if (peopleData){

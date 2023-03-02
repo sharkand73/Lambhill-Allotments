@@ -1,7 +1,9 @@
 //Libraries
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 //Utilities
 import { getEmptyPerson } from '../../utilities/helper';
+import { setPerson } from '../../utilities/peopleRepository';
 //Components
 import PersonForm from './PersonForm';
 //Styles
@@ -11,14 +13,17 @@ import '../../styles/form.css';
 export default function NewPerson({ waitingList }) {
 
     const [finalPerson, setFinalPerson] = useState(getEmptyPerson(waitingList));
-   
+    const navigate = useNavigate();
+
     const getHeading = () => {
         return waitingList ? 'New Waiting List Member' : 'New Plotholder'
     }
 
     const onSubmit = (personModel) => {
         setFinalPerson(personModel);
-        console.log(personModel);
+        setPerson(personModel, null)
+        .then(navigate('/members/plotholders'));
+        //console.log(personModel);
     }
 
     if (!finalPerson){
