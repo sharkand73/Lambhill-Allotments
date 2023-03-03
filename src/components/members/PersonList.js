@@ -1,6 +1,6 @@
 //Libraries
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 //Styles
 import '../../styles/people.css';
 import { stringStartsWith } from '../../utilities/helper';
@@ -13,7 +13,8 @@ export default function PersonList({ people }) {
     const [filterText, setFilterText] = useState("");
 
     useEffect(() => updateList(), [filterText]);
-    
+    const navigate = useNavigate();
+
     const filterTextChange = (e) => {
         setFilterText(e.target.value);
     }
@@ -26,10 +27,13 @@ export default function PersonList({ people }) {
         setFilteredPeople(tempList); 
     }
 
-    const deletePerson = (id) => console.log(id);
+    const deleteListItem = (id) => {
+        deletePerson(id)
+        .then(()=> navigate(0));
+    }
 
     const DelItem = ({ id }) => (
-        <div className='del' onClick={() => deletePerson(id)}>
+        <div className='del' onClick={() => deleteListItem(id)}>
             X
         </div>
     );
@@ -53,10 +57,10 @@ export default function PersonList({ people }) {
 
   return (
     <div className='main-container'>
-        <div className='filter-container'>
+        {(people.length > 0) && <div className='filter-container'>
             <input className='filter-text' type='text' value={filterText} placeholder='Filter name' onChange={(e) => filterTextChange(e)} />            
             { addPersonLink }
-        </div>     
+        </div>}     
         <ul>
             { list }
         </ul>

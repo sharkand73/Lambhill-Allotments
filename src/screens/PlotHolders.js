@@ -13,8 +13,9 @@ import '../styles/people.css';
 export default function PlotHolders({ guestLevel }) {
 
   const navigate = useNavigate();
-  const [allPeople, setAllPeople] = useState([]);  // Need?
-  const [plotHolders, setPlotHolders] = useState([]);
+  const [allPeople, setAllPeople] = useState(null);  // Need?
+  const [plotHolders, setPlotHolders] = useState(null);
+  const [reloadCount, setReloadCount] = useState(0);
 
   useEffect(() => {
     if (guestLevel === 1){
@@ -23,27 +24,29 @@ export default function PlotHolders({ guestLevel }) {
     getPeople()
     .then(people => {
       processData(people);
-      console.log(`All people: ${people.map(p=>p.firstName)}`);
-      console.log(`Plotholders: ${plotHolders.map(p=>p.firstName)}`);
+      //console.log(`All people: ${people.map(p=>p.firstName)}`);
+      //console.log(`Plotholders: ${plotHolders.map(p=>p.firstName)}`);
     });
-  });
+  },[]);
 
   const processData = function(peopleData){
-    if (peopleData){
-      setAllPeople(peopleData);
-      const filteredPeople = peopleData.filter(p => !p.onWaitingList);
-      // TODO: order the people here
-      setPlotHolders(filteredPeople);
+    if (!peopleData){
+      return;
     }
+    setAllPeople(peopleData);
+    const filteredPeople = peopleData.filter(p => !p.onWaitingList);
+    // TODO: order the people here
+    setPlotHolders(filteredPeople);
   }
-  if (!plotHolders || !plotHolders.length){
+  
+  if (!plotHolders){
     return (<Loading />);
   }
    
   return (
     <div className="container">
       <PersonList people={plotHolders} />
-      <Outlet context={{ people: plotHolders }} />
+      <Outlet context={{ people: plotHolders, allPeople, setAllPeople }} />
     </div>
   )
 }

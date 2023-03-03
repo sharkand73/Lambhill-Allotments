@@ -11,6 +11,8 @@ export default function Person({ waitingList }) {
     const { id } = useParams();
     const context = useOutletContext();
     const people = context.people;
+    const allPeople = context.allPeople;
+    const setAllPeople = context.setAllPeople;
 
     useEffect(() => setFormPerson(getPerson()));
 
@@ -40,6 +42,6 @@ export default function Person({ waitingList }) {
     }
 
   return (
-    <PersonDetails formPerson={formPerson} waitingList={waitingList} />
+    <PersonDetails formPerson={formPerson}  waitingList={waitingList} allPeople={allPeople} setAllPeople={setAllPeople} />
   )
 }

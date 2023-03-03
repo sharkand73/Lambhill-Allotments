@@ -20,10 +20,11 @@ export default function NewPerson({ waitingList }) {
     }
 
     const onSubmit = (personModel) => {
-        setFinalPerson(personModel);
+        //setFinalPerson(personModel);
         setPerson(personModel, null)
-        .then(navigate('/members/plotholders'));
-        //console.log(personModel);
+        .then(() => {
+            navigate(0);
+        });
     }
 
     if (!finalPerson){

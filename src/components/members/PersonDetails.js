@@ -6,13 +6,13 @@ import { setPerson } from '../../utilities/peopleRepository';
 //Components
 import PersonForm from './PersonForm';
 
-export default function PersonDetails({ formPerson, waitingList }) {
+
+export default function PersonDetails({ formPerson, waitingList, allPeople, setAllPeople }) {
 
     const [finalPerson, setFinalPerson] = useState(null);
     
     useEffect(() => {
         setFinalPerson(formPerson, formPerson.id);
-        //console.log(`UseEffect hit!\nformPerson: ${formPerson.firstName}`);
     }, [formPerson]);
 
     const navigate = useNavigate();
@@ -23,8 +23,9 @@ export default function PersonDetails({ formPerson, waitingList }) {
 
     const onSubmit = (personModel) => {
         setPerson(personModel, personModel.id)
-        .then(navigate('/members/plotholders'));
-        //console.log(personModel);
+        .then(() => {
+        navigate(0);
+        });
     }
 
     if (!finalPerson){

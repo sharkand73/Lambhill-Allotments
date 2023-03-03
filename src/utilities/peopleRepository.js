@@ -14,7 +14,7 @@ export const getPeople = async function(){
             person.id = s.id;
             people.push(person);
         });
-        console.log(people);
+        //console.log(people);
         return people;
     }
     catch(err){
@@ -41,11 +41,13 @@ export const setPerson = async function(person, id){
     try {
         if (id){
             const docRef = doc(db, peopleCollection, id);
-            delete person.id;
-            await setDoc(docRef, person);
+            let personWithoutId = {...person};
+            delete personWithoutId.id;
+            await setDoc(docRef, personWithoutId);
         }
         else {
             await addDoc(peopleRef, person);
+            //window.location.reload(false);
         }
     }
     catch(err){

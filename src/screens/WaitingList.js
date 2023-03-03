@@ -10,8 +10,8 @@ import PersonList from '../components/members/PersonList';
 
 export default function WaitingList({ guestLevel }) {
   const navigate = useNavigate();
-  const [waitingListMembers, setWaitingListMembers] = useState([]);
-  const [allPeople, setAllPeople] = useState([]); // Need?
+  const [waitingListMembers, setWaitingListMembers] = useState(null);
+  const [allPeople, setAllPeople] = useState(null); // Need?
 
   useEffect(() => {
     if (guestLevel === 1){
@@ -22,15 +22,17 @@ export default function WaitingList({ guestLevel }) {
   },[]);
 
   const processData = function(peopleData){
-    if (peopleData){
-      setAllPeople(peopleData);
-      const filteredPeople = peopleData.filter(p => p.onWaitingList);
-      // TODO: order the people here
-      setWaitingListMembers(filteredPeople);
+    if (!peopleData){
+      return;
     }
+    setAllPeople(peopleData);
+    const filteredPeople = peopleData.filter(p => p.onWaitingList);
+    // TODO: order the people here
+    setWaitingListMembers(filteredPeople);
+    
   }
 
-  if (!waitingListMembers || !waitingListMembers.length){
+  if (!waitingListMembers){
     return (<Loading />);
   }
   
