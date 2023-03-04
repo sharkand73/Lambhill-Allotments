@@ -1,6 +1,10 @@
-import './App.css';
+// Library
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// Utilities
+import { getData, storeGuest } from './utilities/helper';
+import { logout } from './utilities/authService';
+// Components
 import Home from './components/Home';
 import HomeContent from './components/HomeContent';
 import About from './components/About';
@@ -14,9 +18,12 @@ import PlotHolders from './screens/PlotHolders';
 import WaitingList from './screens/WaitingList';
 import MembersRedirect from './components/members/MembersRedirect';
 import Person from './components/members/Person';
-import { getData, storeGuest } from './utilities/helper';
-import { logout } from './utilities/authService';
 import NewPerson from './components/members/NewPerson';
+import Plots from './screens/Plots';
+import NewPlot from './components/members/NewPlot';
+// Styles
+import './App.css';
+
 
 function App() {
 
@@ -53,6 +60,10 @@ function App() {
           <Route path="waitinglist" element={<WaitingList guestLevel={guestLevel} />} >
             <Route index element={< NewPerson waitingList={true} />} />
             <Route path=":id" element={<Person waitingList={true} />} />
+          </Route>
+          <Route path="plots" element={<Plots guestLevel={guestLevel} />} >
+            <Route index element={<NewPlot />} />
+            {/* <Route path=":id" element={<Plot />} /> */}
           </Route>
         </Route>
       </Routes>

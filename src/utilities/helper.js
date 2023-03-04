@@ -33,6 +33,18 @@ export const getEmptyPerson = (onWaitingList) => ({
     plots: ""
 });
 
+export const getEmptyPlot = () => {
+    return ({
+        id: "",
+        area: 0,
+        distance: 0,
+        gradient: "slope",
+        occupied: true,
+        fee: 50,
+        plotHolders: []
+    });
+}
+
 export const stringStartsWith = function(mainString, subString){
     if (!subString){
         return true;

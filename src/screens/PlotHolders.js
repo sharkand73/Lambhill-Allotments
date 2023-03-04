@@ -15,7 +15,6 @@ export default function PlotHolders({ guestLevel }) {
   const navigate = useNavigate();
   const [allPeople, setAllPeople] = useState(null);  // Need?
   const [plotHolders, setPlotHolders] = useState(null);
-  const [reloadCount, setReloadCount] = useState(0);
 
   useEffect(() => {
     if (guestLevel === 1){
@@ -38,7 +37,7 @@ export default function PlotHolders({ guestLevel }) {
     // TODO: order the people here
     setPlotHolders(filteredPeople);
   }
-  
+
   if (!plotHolders){
     return (<Loading />);
   }

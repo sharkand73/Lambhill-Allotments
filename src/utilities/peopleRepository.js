@@ -18,7 +18,7 @@ export const getPeople = async function(){
         return people;
     }
     catch(err){
-        alert(err.message);
+        console.error(err.message);
         return [];
     }
 }
@@ -31,7 +31,7 @@ export const getPerson = async function(uid){
         return docSnapshot ? docSnapshot.data(): null;    
     }
     catch(err){
-        console.log(err.message);
+        console.error(err.message);
         return null;
     }
 }
@@ -51,7 +51,7 @@ export const setPerson = async function(person, id){
         }
     }
     catch(err){
-        alert(err.message);
+        console.error(err.message);
     }
 }
 
@@ -62,7 +62,7 @@ export const deletePerson = async function(uid){
         await deleteDoc(docRef);
     }
     catch(err){
-        alert(err.message);
+        console.error(err.message);
     }
 }
 
@@ -77,7 +77,7 @@ export const getPlotHolders = async function(){
         return querySnapshot.docs.map(d => d.data());  
     }
     catch (err){
-        alert(err.message);
+        console.error(err.message);
     }
 }
 
@@ -94,7 +94,7 @@ export const getWaitingList = async function(){
     }
     catch (err){
         console.log(err.message);
-        alert(err.message);
+        console.error(err.message);
     }
 }
 
