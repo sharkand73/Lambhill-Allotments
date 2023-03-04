@@ -20,6 +20,7 @@ import MembersRedirect from './components/members/MembersRedirect';
 import Person from './components/members/Person';
 import NewPerson from './components/members/NewPerson';
 import Plots from './screens/Plots';
+import PlotList from './components/members/PlotList';
 import NewPlot from './components/members/NewPlot';
 // Styles
 import './App.css';
@@ -62,7 +63,8 @@ function App() {
             <Route path=":id" element={<Person waitingList={true} />} />
           </Route>
           <Route path="plots" element={<Plots guestLevel={guestLevel} />} >
-            <Route index element={<NewPlot />} />
+            <Route index element={<PlotList />} />
+            <Route path="new" element={<NewPlot />} />
             {/* <Route path=":id" element={<Plot />} /> */}
           </Route>
         </Route>

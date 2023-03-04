@@ -104,7 +104,7 @@ export const findByPlotName = async function(plotName){
     // TODO: this might not work
     return people.filter(p => {
         let plots = p.plots.split(',');
-        return plots.indexOf(plotName) != -1;
+        return plots.indexOf(plotName) !== -1;
     });        
 }
 

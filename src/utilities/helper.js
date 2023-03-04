@@ -41,7 +41,7 @@ export const getEmptyPlot = () => {
         gradient: "slope",
         occupied: true,
         fee: 50,
-        plotHolders: []
+        tenants: []
     });
 }
 

@@ -1,4 +1,7 @@
-import { query, collection, doc, getDocs, getDoc, addDoc, setDoc, deleteDoc, where, orderBy } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc, 
+    //getDoc, addDoc,  deleteDoc, where, orderBy 
+} 
+    from "firebase/firestore";
 import { db } from "../firebase";
 
 const plotCollection = 'plots';

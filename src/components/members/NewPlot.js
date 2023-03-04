@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 //Utilities
 import { getEmptyPlot } from '../../utilities/helper';
 import { getPlots, setPlot } from '../../utilities/plotRepository';
+import { getPeople } from '../../utilities/peopleRepository';
+
 //Components
 import Loading from '../Loading';
 //Styles
@@ -13,15 +15,16 @@ import '../../styles/form.css';
 export default function NewPlot() {
 
     const [plotList, setPlotList] = useState(null);
+    const [people, setPeople] = useState(null);
     const [plotModel, setPlotModel] = useState(getEmptyPlot());
     const navigate = useNavigate();
 
     useEffect(() => {
         getPlots()
-        .then(data => setPlotList(data))
+        .then(data => setPlotList(data));
+        getPeople()
+        .then(data => setPeople(data));
     }, []);
-
-    useEffect(() => console.log(plotModel), [plotModel]);
 
     const getHeading = () => {
         return 'New Plot';
@@ -45,6 +48,10 @@ export default function NewPlot() {
             navigate(0);
         });
     }
+
+    const addedTenants = plotModel.tenants.map(
+        tenantNickName => <li>{ tenantNickName }</li>
+    ) 
 
     if (!plotList){
         return (

@@ -1,10 +1,15 @@
-//Libraries
+// Libraries
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-//Styles
-import '../../styles/people.css';
+// Utilities
 import { stringStartsWith } from '../../utilities/helper';
 import { deletePerson } from '../../utilities/peopleRepository';
+// Components
+import Del from '../bits/Del';
+// Styles
+import '../../styles/people.css';
+import '../../styles/list.css';
+
 
 
 export default function PersonList({ people }) {
@@ -32,18 +37,18 @@ export default function PersonList({ people }) {
         .then(()=> navigate(0));
     }
 
-    const DelItem = ({ id }) => (
-        <div className='del' onClick={() => deleteListItem(id)}>
-            X
-        </div>
-    );
+    // const DelItem = ({ id }) => (
+    //     <div className='del' onClick={() => deleteListItem(id)}>
+    //         X
+    //     </div>
+    // );
 
     const listItem = (person, index) => (
         <li className='list-item' key={index}>
             <Link className='list-item-link' to={person.id}>
                 {person.firstName} {person.lastName}
             </Link>
-            <DelItem id={person.id} />
+            <Del onDelete={deleteListItem} id={person.id} />
         </li>
     );
 

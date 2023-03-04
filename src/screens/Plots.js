@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Outlet } from 'react-router-dom';
 //Utilities
-import { getPlots } from '../utilities/peopleRepository';
+import { getPlots } from '../utilities/plotRepository';
 //Components
 import Loading from '../components/Loading';
 //import PersonList from '../components/members/PersonList';
@@ -13,25 +13,23 @@ import '../styles/people.css';
 export default function Plots({ guestLevel }) {
 
   const navigate = useNavigate();
-  // const [allPlots, setAllPlots] = useState(null);  
+  const [allPlots, setAllPlots] = useState(null);  
 
   useEffect(() => {
     if (guestLevel === 1){
         navigate('map');
     }
-    // getPeople()
-    // .then(people => {
-    //   processData(people);
-    // });
-  },[]);
+    getPlots()
+    .then(data => setAllPlots(data));
+    },[]);
   
-  // if (!plots){
-  //   return (<Loading />);
-  // }
+  if (!allPlots){
+    return (<Loading />);
+  }
    
   return (
     <div className="container">
-      <Outlet />
+      <Outlet context={{ plots: allPlots }}/>
     </div>
   )
 }
