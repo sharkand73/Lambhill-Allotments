@@ -5,6 +5,11 @@
     padding-top: 30px;
 }
 
+.scrollable {
+    height: 70vh;
+    overflow-y: scroll;
+}
+
 ul {
     font-size: 20px;
     width: 45%;
@@ -82,6 +87,7 @@ li {
     height: 7em;
     background-color: #efefef;
     border: 2px solid black;
+    margin: 3px;
     display: flex;
     align-items: center;
     justify-content: center;

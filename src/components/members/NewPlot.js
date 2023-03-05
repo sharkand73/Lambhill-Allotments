@@ -36,6 +36,12 @@ export default function NewPlot() {
         setPlotModel(tempPlot);
     }
 
+    const onNumberChange = (e) => {
+        let tempPlot = {...plotModel};
+        tempPlot[e.target.name] = parseInt(e.target.value);
+        setPlotModel(tempPlot);
+    }
+
     const checkboxChange = (e) => {
         let tempPlot = {...plotModel};
         tempPlot[e.target.name] = e.target.checked;
@@ -64,12 +70,16 @@ export default function NewPlot() {
         <div className='form'>
             <header>{getHeading()}</header>
             <div className='form-group'>
-            <label>Id</label>
-            <input type='text'  className="form-input" name='id' value={plotModel.id} onChange={onChange} />
+                <label>Id</label>
+                <input type='text'  className="form-input" name='id' value={plotModel.id} onChange={onChange} />
+            </div>
+            <div className='form-group'>
+                <label>Description</label>
+                <input type='text'  className="form-input" name='description' value={plotModel.descrip} onChange={onChange} />
             </div>
             <div className='form-group'>
                 <label>Area (m&#178;)</label>
-                <input type='number'  className="form-input" name='area' value={plotModel.area} onChange={onChange} />
+                <input type='number'  className="form-input" name='area' value={plotModel.area} onChange={onNumberChange} />
             </div>
             <div className='form-group'>
                 <label>Occupied</label>
@@ -77,7 +87,7 @@ export default function NewPlot() {
             </div>
             <div className='form-group'>
                 <label>Distance (m)</label>
-                <input type='number'  className="form-input" name='distance' value={plotModel.distance} onChange={onChange} />
+                <input type='number'  className="form-input" name='distance' value={plotModel.distance} onChange={onNumberChange} />
             </div>
             <div className='form-group'>
                 <label>Gradient</label>
@@ -88,7 +98,7 @@ export default function NewPlot() {
             </div>
             <div className='form-group'>
                 <label>Fee</label>
-                <input type='number' className="form-input" name='fee' value={plotModel.fee} onChange={onChange} ></input>
+                <input type='number' className="form-input" name='fee' value={plotModel.fee} onChange={onNumberChange} ></input>
             </div>
             <button className="submit" onClick={() => onSubmit()}>Submit</button>
         </div>

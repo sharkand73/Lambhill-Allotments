@@ -15,8 +15,9 @@ export const navItems = [
     {title: 'Events', link: '/events', level: 0},
     {title: 'Contact', link: '/contact', level: 0},
     {title: 'Map', link: '/members/map', level: 1},
+    {title: 'Plots', link: '/members/plots', level: 2},
     {title: 'Plotholders', link: '/members/plotholders', level: 2},
-    {title: 'WaitingList', link: '/members/waitinglist', level: 2},
+    {title: 'WaitingList', link: '/members/waitinglist', level: 2}
 ];
 
 export const getEmptyPerson = (onWaitingList) => ({ 
@@ -36,11 +37,12 @@ export const getEmptyPerson = (onWaitingList) => ({
 export const getEmptyPlot = () => {
     return ({
         id: "",
+        description: "",
         area: 0,
         distance: 0,
         gradient: "slope",
         occupied: true,
-        fee: 50,
+        fee: 45,
         tenants: []
     });
 }

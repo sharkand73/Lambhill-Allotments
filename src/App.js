@@ -22,6 +22,8 @@ import NewPerson from './components/members/NewPerson';
 import Plots from './screens/Plots';
 import PlotList from './components/members/PlotList';
 import NewPlot from './components/members/NewPlot';
+import Plot from './components/members/Plot';
+import AddTenants from './components/members/AddTenants';
 // Styles
 import './App.css';
 
@@ -65,7 +67,8 @@ function App() {
           <Route path="plots" element={<Plots guestLevel={guestLevel} />} >
             <Route index element={<PlotList />} />
             <Route path="new" element={<NewPlot />} />
-            {/* <Route path=":id" element={<Plot />} /> */}
+            <Route path=":id" element={<Plot />} />
+            <Route path=":id/addTenants" element={<AddTenants />} />
           </Route>
         </Route>
       </Routes>
