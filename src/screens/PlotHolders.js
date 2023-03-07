@@ -1,6 +1,6 @@
 //Libraries
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { Link, useNavigate, Outlet } from 'react-router-dom';
 //Utilities
 import { getPeople } from '../utilities/peopleRepository';
 //Components
@@ -38,13 +38,24 @@ export default function PlotHolders({ guestLevel }) {
     setPlotHolders(filteredPeople);
   }
 
+  const onPersonClick = (id) => navigate(id);
+
+  const addPersonLink = (        
+    <Link className='add-link' to=''>
+        Add
+    </Link>        
+);
+
   if (!plotHolders){
     return (<Loading />);
   }
    
   return (
     <div className="container">
-      <PersonList people={plotHolders} />
+      <div>
+        <PersonList people={plotHolders} canDelete={true} hasFilter={true} onPersonClick={onPersonClick} />
+        { addPersonLink }
+      </div>
       <Outlet context={{ people: plotHolders, allPeople, setAllPeople }} />
     </div>
   )

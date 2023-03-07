@@ -29,6 +29,7 @@ a, a:visited {
 li {
     text-decoration: none;
     list-style: none;
+    cursor: pointer;
 }
 
 .list-item {

@@ -12,7 +12,7 @@ import '../../styles/list.css';
 
 
 
-export default function PersonList({ people }) {
+export default function PersonList({ people, canDelete, hasFilter, onPersonClick }) {
 
     const [filteredPeople, setFilteredPeople] = useState(people);
     const [filterText, setFilterText] = useState("");
@@ -37,34 +37,23 @@ export default function PersonList({ people }) {
         .then(()=> navigate(0));
     }
 
-    // const DelItem = ({ id }) => (
-    //     <div className='del' onClick={() => deleteListItem(id)}>
-    //         X
-    //     </div>
-    // );
-
     const listItem = (person, index) => (
         <li className='list-item' key={index}>
-            <Link className='list-item-link' to={person.id}>
+            <div className='list-item-link' onClick={() => onPersonClick(person.id)}>
                 {person.firstName} {person.lastName}
-            </Link>
-            <Del onDelete={deleteListItem} id={person.id} />
+            </div>
+            {canDelete && <Del onDelete={deleteListItem} id={person.id} />}
         </li>
     );
 
-    const addPersonLink = (        
-            <Link className='add-link' to=''>
-                Add
-            </Link>        
-    );
+    
 
     const list = filteredPeople.map((p, i) => listItem(p, i));
 
   return (
     <div className='main-container'>
-        {(people.length > 0) && <div className='filter-container'>
-            <input className='filter-text' type='text' value={filterText} placeholder='Filter name' onChange={(e) => filterTextChange(e)} />            
-            { addPersonLink }
+        { hasFilter && (people.length > 0) && <div className='filter-container'>
+            <input className='filter-text' type='text' value={filterText} placeholder='Filter name' onChange={(e) => filterTextChange(e)} />                 
         </div>}     
         <ul>
             { list }

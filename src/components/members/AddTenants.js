@@ -5,8 +5,8 @@ import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import { getPeople } from '../../utilities/peopleRepository';
 // Components
 import Loading from '../Loading';
+import AddTenantsLists from './AddTenantsLists';
 // Styles
-
 
 export default function AddTenants() {
 
@@ -15,41 +15,26 @@ export default function AddTenants() {
     const plots = context.plots;
     const people = context.people;
     const { id } = useParams();
-    const [tenants, setTenants] = useState(null);
 
-    useEffect(() => setTenants(findTenants()), [id, people]);
-
-    const findTenants = function(){
-        // console.log(`Plot name ${id}`);
-        // console.log(`Plots: ${plots}`);
-        // console.log(`People: ${people}`);
-        if (id && plots && people && people.length > 0){
-            const plot = plots.find(p => p.id === id);
-        if (!plot) return null;
-        const tenantNickNames = plot.tenants;
-        return tenantNickNames.map(n => findPersonByNickName(n));
-        }
-    }
+    let tenants = null;
+    let plot = null;
 
     const findPersonByNickName = function(nickName){
         if (!people) return null;
-        return people.find(p => p.nickName = nickName);
+        return people.find(p => p.nickName === nickName);
     }
 
-    if (!tenants){
+    if (plots){
+        plot = plots.find(p => p.id === id);   
+        const tenantNickNames = plot.tenants;
+        tenants = tenantNickNames.map(n => findPersonByNickName(n));
+    }
+
+    if (!tenants || !plot){
         return <Loading />
     }
 
-    const tenantList = tenants.map((t,i) => <li key={i}>{t.nickName}</li>)
-
   return (
-    <>
-        <h1>
-            Add / remove tenants from {id}
-        </h1>
-        <ul>
-            { tenantList }
-        </ul>
-    </>
+    <AddTenantsLists plotTenants={tenants} startingPeople={people} plot={plot} />
   )
 }

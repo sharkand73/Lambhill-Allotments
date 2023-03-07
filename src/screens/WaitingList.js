@@ -1,6 +1,6 @@
 //Libraries
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { Link, useNavigate, Outlet } from 'react-router-dom';
 //Utilities
 import { getPeople } from '../utilities/peopleRepository';
 //Components
@@ -28,9 +28,16 @@ export default function WaitingList({ guestLevel }) {
     setAllPeople(peopleData);
     const filteredPeople = peopleData.filter(p => p.onWaitingList);
     // TODO: order the people here
-    setWaitingListMembers(filteredPeople);
-    
+    setWaitingListMembers(filteredPeople);  
   }
+
+  const onPersonClick = (id) => navigate(`${id}`);
+
+  const addPersonLink = (        
+    <Link className='add-link' to=''>
+        Add
+    </Link>        
+);
 
   if (!waitingListMembers){
     return (<Loading />);
@@ -38,7 +45,10 @@ export default function WaitingList({ guestLevel }) {
   
   return (
     <div className="container">
-      <PersonList people={waitingListMembers} />
+      <div>
+        <PersonList people={waitingListMembers} canDelete={true} hasFilter={true} onPersonClick={onPersonClick} />
+        { addPersonLink }
+      </div>
       <Outlet context={{ people: waitingListMembers }} />
     </div>
   )
