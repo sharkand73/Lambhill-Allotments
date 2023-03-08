@@ -17,6 +17,7 @@ export default function AddTenants() {
     const { id } = useParams();
 
     let tenants = null;
+    let startingPeople = [...people];
     let plot = null;
 
     const findPersonByNickName = function(nickName){
@@ -24,17 +25,25 @@ export default function AddTenants() {
         return people.find(p => p.nickName === nickName);
     }
 
+    const removeTenantFromStartingPeople = (t) => {
+        const i = startingPeople.findIndex(p => p.id === t.id);
+        startingPeople.splice(i,1);
+    }
+
     if (plots){
         plot = plots.find(p => p.id === id);   
         const tenantNickNames = plot.tenants;
         tenants = tenantNickNames.map(n => findPersonByNickName(n));
+        tenants.forEach(t => removeTenantFromStartingPeople(t));
     }
+
+    
 
     if (!tenants || !plot){
         return <Loading />
     }
 
   return (
-    <AddTenantsLists plotTenants={tenants} startingPeople={people} plot={plot} />
+    <AddTenantsLists plotTenants={tenants} startingPeople={startingPeople} plot={plot} />
   )
 }

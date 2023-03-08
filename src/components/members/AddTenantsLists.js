@@ -1,14 +1,14 @@
 // Libraries
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 // Utilities
-import { getPeople } from '../../utilities/peopleRepository';
 // Components
 import Loading from '../Loading';
 import PersonList from './PersonList';
+import TenantList from './TenantList';
 // Styles
 
-export default function AddTenants({ plot, plotTenants, startingPeople }) {
+export default function AddTenantsLists({ plot, plotTenants, startingPeople }) {
 
     const navigate = useNavigate();   
     const [tenants, setTenants] = useState(plotTenants);
@@ -37,21 +37,18 @@ export default function AddTenants({ plot, plotTenants, startingPeople }) {
     }
 
   return (
-    <div className='container'>
-        <h2>
-            Add / remove tenants from {plot.id}
-        </h2>
-        {/* <PersonList people={availablePeople} hasFilter={true} onPersonClick={addTenant} /> */}
-        <ul>
-            {availablePeople.map(p => <li onClick={()=>addTenant(p.id)}>{p.nickName}</li>)}
-        </ul>
+    <>
         <div>
-            <h3>{ plot.id } Tenants</h3>
-            {/* <PersonList people={tenants} onPersonClick={removeTenant} /> */}
-            <ul>
-                {tenants.map(p => <li onClick={()=>removeTenant(p.id)}>{p.nickName}</li>)}
-            </ul>
+            Add / remove tenants from {plot.id}
         </div>
-    </div>
+        <div className='container'>
+            
+            <PersonList people={availablePeople} onPersonClick={addTenant} />  
+            <div>
+                <h3>{ plot.id } Tenants</h3>
+                <TenantList people={tenants} onPersonClick={removeTenant} />
+            </div>
+        </div>
+    </>
   )
 }
