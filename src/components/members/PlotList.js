@@ -33,7 +33,7 @@ export default function PlotList() {
     }
 
   return (
-    <div className='plot-list-container'>  
+    <div className='scrollable container'>  
         <ul className='plot-list'>
             { plotList }
         </ul>

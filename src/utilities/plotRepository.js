@@ -27,6 +27,7 @@ export const getPlots = async function() {
 export const setPlot = async function(plot) {
     try {
             const docRef = doc(db, plotCollection, plot.id);
+            console.log(plot.tenants);
             await setDoc(docRef, plot);
     }
     catch(err){

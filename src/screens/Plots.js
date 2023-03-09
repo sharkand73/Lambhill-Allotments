@@ -39,9 +39,7 @@ export default function Plots({ guestLevel }) {
     return (<Loading />);
   }
    
-  return (
-    <div className="scrollable container">
+  return (  
       <Outlet context={{ plots: allPlots, people }}/>
-    </div>
   )
 }

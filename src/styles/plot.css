@@ -1,0 +1,72 @@
+h2 {
+    text-align: center;
+}
+
+.add-tenants-container {
+    max-width: 600px;
+    padding-left: 100px;
+}
+
+.left-column {
+    width: 35%;
+}
+
+.filter-container {
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.filter-text {
+    position: absolute;
+    right: 2px;
+}
+
+.search {
+    position: absolute;
+    right: 4px;
+    top: 2px;
+    z-index: 2;
+}
+
+.submit:hover {
+    background-color: #333;
+}
+
+.add-link {
+    border: solid 2px gray; 
+    padding: 2px;
+}
+
+.add-link:hover {
+    background-color: #efefef;
+}
+
+.plot {
+    width: 15em;
+    height: 15em;
+    border: solid 2px black;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+h3 {
+    text-align: center;
+    color: white;
+    background-color: black;
+    margin: 0;
+    padding: 7px;
+}
+
+.save {
+    padding: 6px;
+    font-size: 18px;
+    margin: 10px 0 10px 70%;
+    border: none;
+    color: white;
+    background-color: black;
+    width: 4em;
+  }
+.save:hover {
+    background-color: grey;
+}
+

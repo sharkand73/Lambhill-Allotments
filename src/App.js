@@ -23,7 +23,7 @@ import Plots from './screens/Plots';
 import PlotList from './components/members/PlotList';
 import NewPlot from './components/members/NewPlot';
 import Plot from './components/members/Plot';
-import AddTenants from './components/members/AddTenants';
+import AddTenantsHome from './components/members/AddTenantsHome';
 // Styles
 import './App.css';
 
@@ -68,7 +68,7 @@ function App() {
             <Route index element={<PlotList />} />
             <Route path="new" element={<NewPlot />} />
             <Route path=":id" element={<Plot />} />
-            <Route path=":id/addTenants" element={<AddTenants />} />
+            <Route path=":id/addTenants" element={<AddTenantsHome />} />
           </Route>
         </Route>
       </Routes>
