@@ -82,10 +82,11 @@ export default function AddTenants({ plot, plotTenants, startingPeople }) {
             <div>
                 <div className='plot'>
                     <h3>{ plot.id } Tenants</h3>
-                    <TenantList people={tenants} onPersonClick={removeTenant} />
-                    
+                    <TenantList people={tenants} onPersonClick={removeTenant} />    
                 </div>
-                <button className="save" onClick={() => onSave()}>Save</button>
+                <div className='button-container'>
+                    <button className="save" onClick={() => onSave()}>Save</button>
+                </div>
             </div>
         </div>
     </>

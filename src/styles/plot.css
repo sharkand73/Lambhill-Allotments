@@ -1,3 +1,11 @@
+.plot-container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 h2 {
     text-align: center;
 }
@@ -57,16 +65,33 @@ h3 {
     padding: 7px;
 }
 
-.save {
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.two-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.save, .edit {
     padding: 6px;
     font-size: 18px;
-    margin: 10px 0 10px 70%;
+    margin: 10px 0 10px 0;
     border: none;
     color: white;
     background-color: black;
-    width: 4em;
+    width: auto;
   }
-.save:hover {
+
+  .edit {
+    width: 8em;
+  }
+
+.save:hover, .edit:hover {
     background-color: grey;
 }
 
