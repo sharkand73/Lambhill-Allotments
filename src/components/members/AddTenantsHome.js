@@ -47,7 +47,7 @@ export default function AddTenantsHome() {
             Add / remove tenants from {plot.id}
         </h2>
         <div className='add-tenants-container'>
-            <AddTenants plotTenants={tenants} startingPeople={startingPeople} plot={plot} />
+            <AddTenants plotTenants={tenants} people={people} startingPeople={startingPeople} plot={plot} />
         </div>
     </>
   )

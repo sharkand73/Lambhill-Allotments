@@ -6,6 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // Utilities
 import { stringStartsWith } from '../../utilities/helper';
 import { setPlot } from '../../utilities/plotRepository';
+import { addPlotToPerson, removePlotFromPerson } from '../../utilities/peopleRepository';
 // Components
 import Loading from '../Loading';
 import PersonList from './PersonList';
@@ -16,7 +17,7 @@ import '../../styles/list.css';
 import '../../styles/plot.css';
 
 
-export default function AddTenants({ plot, plotTenants, startingPeople }) {
+export default function AddTenants({ plot, plotTenants, people, startingPeople }) {
 
     const navigate = useNavigate();   
     const [tenants, setTenants] = useState(plotTenants);
@@ -32,22 +33,26 @@ export default function AddTenants({ plot, plotTenants, startingPeople }) {
             return
         };
         const i = availablePeople.findIndex(p => p.id === id);
+        const tenantToAdd = availablePeople[i];
         let tempTenants = [...tenants];
-        tempTenants.push(availablePeople[i]);
+        tempTenants.push(tenantToAdd);
         let tempAvailablePeople = [...availablePeople];
         tempAvailablePeople.splice(i, 1);
         setTenants(tempTenants);
         setAvailablePeople(tempAvailablePeople);
+        addPlotToPerson(tenantToAdd, plot);
     }
 
     const removeTenant = (id) => {
         const i = tenants.findIndex(p => p.id === id);
+        const tenantToRemove = tenants[i];
         let tempAvailablePeople = [...availablePeople];
         let tempTenants = [...tenants];
-        tempAvailablePeople.push(tenants[i]);
+        tempAvailablePeople.push(tenantToRemove);
         tempTenants.splice(i, 1);
         setAvailablePeople(tempAvailablePeople);
         setTenants(tempTenants);
+        removePlotFromPerson(tenantToRemove, plot);
     }
 
     const updateList = () => {

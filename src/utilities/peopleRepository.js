@@ -36,7 +36,7 @@ export const getPerson = async function(uid){
     }
 }
 
-// Adds a person to the people collection
+// Adds /updates a person to the people collection
 export const setPerson = async function(person, id){
     try {
         if (id){
@@ -66,7 +66,32 @@ export const deletePerson = async function(uid){
     }
 }
 
-// Gets all current plotholders
+// Adds the plot name (id) to the field 'plots' in the person object
+export const addPlotToPerson = async function(person, plot){
+    const id = person.id;
+    const plotName = plot.id;
+    let personPlotNames = person.plots ? person.plots : "";
+    let plotNamesArray = personPlotNames ? personPlotNames.split(', '): [];
+    if (plotNamesArray.indexOf(plotName) !== -1) return;
+    plotNamesArray.push(plotName);
+    person.plots = plotNamesArray.join(', ');
+    await setPerson(person, id);
+} 
+
+// removes the plot name (id) from the field 'plots' in the person object
+export const removePlotFromPerson = async function(person, plot){
+    const id = person.id;
+    const plotName = plot.id;
+    let personPlotNames = person.plots ? person.plots : "";
+    let plotNamesArray = personPlotNames.split(', ');
+    const i = plotNamesArray.indexOf(plotName)
+    if (i === -1) return;
+    plotNamesArray.splice(i, 1);
+    person.plots = plotNamesArray.join(', ');
+    await setPerson(person, id);
+} 
+
+// Gets all current plotholders - not in use
 export const getPlotHolders = async function(){
     try {
         const q = query(peopleRef, where('onWaitingList', '==', false));
@@ -81,7 +106,7 @@ export const getPlotHolders = async function(){
     }
 }
 
-// Gets the current waiting list 
+// Gets the current waiting list  - not in use
 export const getWaitingList = async function(){
     try {
         const q = query(peopleRef, where('onWaitingList', '==', true)
@@ -98,7 +123,7 @@ export const getWaitingList = async function(){
     }
 }
 
-// Finds people by a given plot name
+// Finds people by a given plot name = not in use
 export const findByPlotName = async function(plotName){
     const people = await getPeople();
     // TODO: this might not work
