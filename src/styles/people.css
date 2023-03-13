@@ -33,3 +33,55 @@
     background-color: #efefef;
 }
 
+.delete-container {
+    width: 35%;
+    height: 50%;
+    border: solid 2px red;
+    margin-top: 50px;
+}
+
+.delete-heading {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+}
+
+.delete-options-container {
+    padding: 10px;
+}
+
+h4 {
+    margin: 8px 0;
+}
+
+.delete-option {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    padding: 5px 0 5px 15px;
+    padding-bottom: 4px;
+}
+
+.delete-option:hover {
+    background-color: #efefef;
+    cursor: pointer;
+}
+
+.delete-button {
+    padding: 6px;
+    font-size: 18px;
+    margin: 18px 0 10px 0;
+    border: none;
+    color: white;
+    background-color: black;
+    width: auto;
+}
+
+.delete-button:hover {
+    background-color: grey;
+}
+
+

@@ -11,8 +11,6 @@ export default function Person({ waitingList }) {
     const { id } = useParams();
     const context = useOutletContext();
     const people = context.people;
-    const allPeople = context.allPeople;
-    const setAllPeople = context.setAllPeople;
 
     useEffect(() => setFormPerson(getPerson()));
 
@@ -22,7 +20,7 @@ export default function Person({ waitingList }) {
             setError(true);
             return null;
         }
-        const person = people.find(p => p.id == id);
+        const person = people.find(p => p.id === id);
         if (!person){
             console.log(`id: ${id}`);
             setError(true);
@@ -42,6 +40,6 @@ export default function Person({ waitingList }) {
     }
 
   return (
-    <PersonDetails formPerson={formPerson}  waitingList={waitingList} allPeople={allPeople} setAllPeople={setAllPeople} />
+    <PersonDetails formPerson={formPerson}  waitingList={waitingList} />
   )
 }

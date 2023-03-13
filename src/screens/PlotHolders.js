@@ -36,7 +36,7 @@ export default function PlotHolders({ guestLevel }) {
       return;
     }
     setAllPeople(peopleData);
-    const nonWaitingListPeople = peopleData.filter(p => !p.onWaitingList);
+    const nonWaitingListPeople = peopleData.filter(p => p.isPlotHolder);
     // TODO: order the people here
     setPlotHolders(nonWaitingListPeople);
     setFilteredPlotHolders(nonWaitingListPeople);
@@ -78,7 +78,8 @@ export default function PlotHolders({ guestLevel }) {
         </div>
         <PersonList people={filteredPlotHolders} canDelete={true} onPersonClick={onPersonClick} />
       </div>
-      <Outlet context={{ people: plotHolders, allPeople, setAllPeople }} />
+      <Outlet context={{ people: plotHolders, allPeople, setAllPeople }} />  
+       {/* TODO: remove allPeople, setAllPeople ? */}
     </div>
   )
 }

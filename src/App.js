@@ -19,6 +19,7 @@ import WaitingList from './screens/WaitingList';
 import MembersRedirect from './components/members/MembersRedirect';
 import Person from './components/members/Person';
 import NewPerson from './components/members/NewPerson';
+import DeletePerson from './components/members/DeletePerson';
 import Plots from './screens/Plots';
 import PlotList from './components/members/PlotList';
 import NewPlot from './components/members/NewPlot';
@@ -59,10 +60,13 @@ function App() {
           <Route path="plotholders" element={<PlotHolders guestLevel={guestLevel} />} >
             <Route index element={< NewPerson waitingList={false} />} />
             <Route path=":id" element={<Person waitingList={false} />} />
+            <Route path=":id/delete" element={<DeletePerson waitingList={false} />} />
           </Route>
           <Route path="waitinglist" element={<WaitingList guestLevel={guestLevel} />} >
             <Route index element={< NewPerson waitingList={true} />} />
             <Route path=":id" element={<Person waitingList={true} />} />
+            <Route path=":id/delete" element={<DeletePerson waitingList={true} />} />
+
           </Route>
           <Route path="plots" element={<Plots guestLevel={guestLevel} />} >
             <Route index element={<PlotList />} />

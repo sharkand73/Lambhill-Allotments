@@ -28,7 +28,6 @@ export default function NewPerson({ waitingList }) {
     }
 
     if (!finalPerson){
-        console.log("Null!");
         return (
             <div></div>
         );

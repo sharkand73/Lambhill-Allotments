@@ -56,9 +56,9 @@ export const setPerson = async function(person, id){
 }
 
 // Deletes a person from the people collection
-export const deletePerson = async function(uid){
+export const deletePerson = async function(id){
     try {
-        const docRef = doc(db, peopleCollection, uid);
+        const docRef = doc(db, peopleCollection, id);
         await deleteDoc(docRef);
     }
     catch(err){
@@ -75,6 +75,7 @@ export const addPlotToPerson = async function(person, plot){
     if (plotNamesArray.indexOf(plotName) !== -1) return;
     plotNamesArray.push(plotName);
     person.plots = plotNamesArray.join(', ');
+    person.isPlotHolder = true;
     await setPerson(person, id);
 } 
 
@@ -88,8 +89,33 @@ export const removePlotFromPerson = async function(person, plot){
     if (i === -1) return;
     plotNamesArray.splice(i, 1);
     person.plots = plotNamesArray.join(', ');
+    if (!plotNamesArray.length && person.onWaitingList){
+        person.isPlotHolder = false;
+    }
     await setPerson(person, id);
 } 
+
+//
+export const switchToWaitingList = async function(person){
+    if (person.plots) {
+        alert("This person has plots");
+        return;
+    }
+    person.onWaitingList = true;
+    person.isPlotHolder = false;
+    await setPerson(person, person.id);
+}
+
+//
+export const switchToPlotHolders = async function(person){
+    if (!person.plots) {
+        alert("This person doesn't have a plot yet");
+        return;
+    }
+    person.isPlotHolder = true;
+    person.onWaitingList = false;
+    await setPerson(person, person.id);
+}
 
 // Gets all current plotholders - not in use
 export const getPlotHolders = async function(){

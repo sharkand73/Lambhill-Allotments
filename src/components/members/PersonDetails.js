@@ -7,7 +7,7 @@ import { setPerson } from '../../utilities/peopleRepository';
 import PersonForm from './PersonForm';
 
 
-export default function PersonDetails({ formPerson, waitingList, allPeople, setAllPeople }) {
+export default function PersonDetails({ formPerson, waitingList }) {
 
     const [finalPerson, setFinalPerson] = useState(null);
     

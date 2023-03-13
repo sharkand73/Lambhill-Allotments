@@ -5,3 +5,9 @@ Make plot names clickable?  Or change to list in db ?
 Order plot names alphabetically
 Order tenant list alphabetically
 Order waiting list by date joined desc
+Think about deletion of people - separate collection?
+Think about moving person from waiting list from plot holders
+Think about moving person from plotholders to waiting list
+Think about person being on both lists
+Think about date joined and date joined waiting list
+Fix back button - appearance and link!

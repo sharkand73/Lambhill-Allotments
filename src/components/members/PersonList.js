@@ -18,8 +18,9 @@ export default function PersonList({ people, canDelete, onPersonClick }) {
     const navigate = useNavigate();
 
     const deleteListItem = (id) => {
-        deletePerson(id)
-        .then(()=> navigate(0));
+        navigate(`${id}/delete`);
+        //deletePerson(id)
+        //.then(()=> navigate(0));
     }
 
     const listItem = (person, index) => (

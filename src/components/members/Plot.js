@@ -62,7 +62,7 @@ export default function Plot() {
                     </div>
                 </div>
                 <div className='two-button-container'>
-                    <Back />
+                    <Back goTo={-1} />
                     <Link to='addTenants'>
                         <button className='edit'>Edit Tenants</button>
                     </Link>
