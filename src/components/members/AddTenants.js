@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 // Utilities
-import { stringStartsWith } from '../../utilities/helper';
+import { orderAlphabetically, stringStartsWith } from '../../utilities/helper';
 import { setPlot } from '../../utilities/plotRepository';
 import { addPlotToPerson, removePlotFromPerson } from '../../utilities/peopleRepository';
 // Components
@@ -36,8 +36,10 @@ export default function AddTenants({ plot, plotTenants, people, startingPeople }
         const tenantToAdd = availablePeople[i];
         let tempTenants = [...tenants];
         tempTenants.push(tenantToAdd);
+        orderAlphabetically(tempTenants, 'lastName');
         let tempAvailablePeople = [...availablePeople];
         tempAvailablePeople.splice(i, 1);
+        orderAlphabetically(tempAvailablePeople, 'lastName');
         setTenants(tempTenants);
         setAvailablePeople(tempAvailablePeople);
         addPlotToPerson(tenantToAdd, plot);
@@ -49,7 +51,9 @@ export default function AddTenants({ plot, plotTenants, people, startingPeople }
         let tempAvailablePeople = [...availablePeople];
         let tempTenants = [...tenants];
         tempAvailablePeople.push(tenantToRemove);
+        orderAlphabetically(tempAvailablePeople, 'lastName');
         tempTenants.splice(i, 1);
+        orderAlphabetically(tempTenants, 'lastName');
         setAvailablePeople(tempAvailablePeople);
         setTenants(tempTenants);
         removePlotFromPerson(tenantToRemove, plot);

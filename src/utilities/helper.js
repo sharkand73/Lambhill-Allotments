@@ -55,3 +55,9 @@ export const stringStartsWith = function(mainString, subString){
     const l = subString.length;
     return mainString.slice(0, l).toLowerCase() === subString.toLowerCase();
 }
+
+export const orderAlphabetically = function(objectArray, stringProperty, asc=true){
+    const sp = stringProperty;
+    const u = asc ? 1 : -1;
+    return objectArray.sort((a,b) => a[sp] > b[sp] ? u : -u);
+}

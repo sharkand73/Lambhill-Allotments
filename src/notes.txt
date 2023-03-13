@@ -2,12 +2,14 @@ TO DO
 -----
 
 Make plot names clickable?  Or change to list in db ?
-Order plot names alphabetically
-Order tenant list alphabetically
-Order waiting list by date joined desc
+Order plot names alphabetically X
+Order tenant list alphabetically X
+Order waiting list by date joined desc X
 Think about deletion of people - separate collection?
-Think about moving person from waiting list from plot holders
-Think about moving person from plotholders to waiting list
-Think about person being on both lists
-Think about date joined and date joined waiting list
+Think about moving person from waiting list from plot holders X
+Think about moving person from plotholders to waiting list X
+Think about person being on both lists X
+Think about date joined and date joined waiting list X
+Dates when plotholders are moved around? X ?
 Fix back button - appearance and link!
+Add map to plots screen with localStorage caching preference

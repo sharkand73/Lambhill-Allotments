@@ -76,6 +76,9 @@ export const addPlotToPerson = async function(person, plot){
     plotNamesArray.push(plotName);
     person.plots = plotNamesArray.join(', ');
     person.isPlotHolder = true;
+    if (plotNamesArray.length === 1){
+        person.dateJoined = new Date().toISOString().slice(0,10);
+    }
     await setPerson(person, id);
 } 
 
@@ -103,6 +106,7 @@ export const switchToWaitingList = async function(person){
     }
     person.onWaitingList = true;
     person.isPlotHolder = false;
+    person.joinedWaitingList = new Date().toISOString().slice(0,10);
     await setPerson(person, person.id);
 }
 

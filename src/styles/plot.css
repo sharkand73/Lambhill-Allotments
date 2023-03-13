@@ -10,9 +10,15 @@ h2 {
     text-align: center;
 }
 
+.add-tenants-home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .add-tenants-container {
-    max-width: 600px;
-    padding-left: 100px;
+    width: 50%;
+    padding: 10px;
 }
 
 .left-column {

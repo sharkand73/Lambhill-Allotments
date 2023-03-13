@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 //Utilities
 import { getPeople } from '../utilities/peopleRepository';
-import { stringStartsWith } from '../utilities/helper';
+import { orderAlphabetically, stringStartsWith } from '../utilities/helper';
 //Components
 import Loading from '../components/Loading';
 import PersonList from '../components/members/PersonList';
@@ -36,10 +36,10 @@ export default function PlotHolders({ guestLevel }) {
       return;
     }
     setAllPeople(peopleData);
-    const nonWaitingListPeople = peopleData.filter(p => p.isPlotHolder);
-    // TODO: order the people here
-    setPlotHolders(nonWaitingListPeople);
-    setFilteredPlotHolders(nonWaitingListPeople);
+    let plotHolderPeople = peopleData.filter(p => p.isPlotHolder);
+    orderAlphabetically(plotHolderPeople, 'lastName');
+    setPlotHolders(plotHolderPeople);
+    setFilteredPlotHolders(plotHolderPeople);
   }
 
   const updateList = () => {

@@ -1,6 +1,7 @@
 // Libraries
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { orderAlphabetically } from '../../utilities/helper';
 // Utilities
 import { getPeople } from '../../utilities/peopleRepository';
 // Components
@@ -17,7 +18,7 @@ export default function AddTenantsHome() {
     const { id } = useParams();
 
     let tenants = null;
-    let startingPeople = [...people];
+    let startingPeople = orderAlphabetically(people, 'lastName');
     let plot = null;
 
     const findPersonByNickName = function(nickName){
@@ -35,6 +36,7 @@ export default function AddTenantsHome() {
         const tenantNickNames = plot.tenants;
         tenants = tenantNickNames.map(n => findPersonByNickName(n));
         tenants.forEach(t => removeTenantFromStartingPeople(t));
+        orderAlphabetically(tenants, 'lastName');
     }
 
     if (!tenants || !plot){
@@ -42,13 +44,13 @@ export default function AddTenantsHome() {
     }
 
   return (
-    <>
+    <div className='add-tenants-home-container'>
         <h2>
             Add / remove tenants from {plot.id}
         </h2>
         <div className='add-tenants-container'>
             <AddTenants plotTenants={tenants} people={people} startingPeople={startingPeople} plot={plot} />
         </div>
-    </>
+    </div>
   )
 }

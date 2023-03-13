@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 //Utilities
 import { getPeople } from '../utilities/peopleRepository';
-import { stringStartsWith } from '../utilities/helper';
+import { orderAlphabetically, stringStartsWith } from '../utilities/helper';
 //Components
 import Loading from '../components/Loading';
 import PersonList from '../components/members/PersonList';
@@ -34,8 +34,8 @@ export default function WaitingList({ guestLevel }) {
       return;
     }
     setAllPeople(peopleData);
-    const waitingListPeople = peopleData.filter(p => p.onWaitingList);
-    // TODO: order the people here
+    let waitingListPeople = peopleData.filter(p => p.onWaitingList);
+    orderAlphabetically(waitingListPeople, 'joinedWaitingList');
     setWaitingList(waitingListPeople); 
     setFilteredWaitingList(waitingListPeople); 
   }
